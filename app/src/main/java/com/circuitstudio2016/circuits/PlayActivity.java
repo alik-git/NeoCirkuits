@@ -1,5 +1,6 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +15,8 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     protected void hCircuits(View w){
-        Toast t1 = Toast.makeText(getApplicationContext(), "Start H circuits!", Toast.LENGTH_LONG);
-        t1.show();
+        Intent intent = new Intent(getApplicationContext(), BasicHamiltonCircuitActivity.class);
+        startActivity(intent);
     }
 
     protected void hPaths(View w){
