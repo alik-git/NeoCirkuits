@@ -43,7 +43,7 @@ public class HamiltonPath {
         else if(!v.isActivated() && v.isConnected(activated.get(activated.size()-1))){
             activate(v);
         }
-        else if(v == activated.get(activated.size()-2)){
+        else if(activated.size() >= 2 && v == activated.get(activated.size()-2)){
             removeLast();
         }
     }

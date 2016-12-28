@@ -18,6 +18,10 @@ public class Vertex {
         connections = new ArrayList<Vertex>();
     }
 
+    public int getMarginLeft(){ return marginLeft; }
+
+    public int getMarginTop(){ return marginTop; }
+
     public boolean isActivated(){
         return isActivated;
     }
