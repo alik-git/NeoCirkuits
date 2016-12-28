@@ -8,7 +8,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/graph_placeHolder"
-        android:layout_below="@+id/textView2"
+        android:layout_marginTop="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph_placeHolder"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="67dp"
+        android:id="@+id/vertexbutton1"
+        android:onClick="vertex1click" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/graph_placeHolder"
+        android:layout_toStartOf="@+id/graph_placeHolder"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="133dp"
+        android:id="@+id/vertexbutton2"
+        android:onClick="vertex2click" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph_placeHolder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:id="@+id/button11"
+        android:onClick="vertex1click" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph_placeHolder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:id="@+id/button10"
+        android:onClick="vertex1click" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph_placeHolder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:id="@+id/button9"
+        android:onClick="vertex1click" />
+
+    <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/vertexbutton2"
+        android:layout_toRightOf="@+id/graph_placeHolder"
+        android:layout_toEndOf="@+id/graph_placeHolder"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:id="@+id/vertexbutton3"
+        android:onClick="vertex3click" />
 </RelativeLayout>

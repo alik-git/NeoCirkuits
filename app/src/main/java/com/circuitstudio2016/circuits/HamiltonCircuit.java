@@ -19,6 +19,7 @@ public class HamiltonCircuit extends HamiltonPath{
     }
 
     public void tryActivate(Vertex v){
+        System.out.println("PRESSED! AND ACTIVATED!");
         super.tryActivate(v);
         if(super.isFinished() && v == getActivated().get(0)){
             activate(v);
