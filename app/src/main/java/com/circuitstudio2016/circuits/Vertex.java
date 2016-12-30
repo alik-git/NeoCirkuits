@@ -34,9 +34,18 @@ public class Vertex {
         connections.add(other);
     }
 
+    private void removeConnection(Vertex other) { connections.remove(other); }
+
     public void connect(Vertex other){
         addConnection(other);
         other.addConnection(this);
+    }
+
+    public void disconnect(Vertex other){
+        if(isConnected(other)){
+            removeConnection(other);
+            other.removeConnection(this);
+        }
     }
 
     public ArrayList<Vertex> getConnections(){

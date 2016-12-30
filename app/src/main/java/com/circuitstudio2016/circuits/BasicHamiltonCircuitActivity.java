@@ -23,15 +23,21 @@ public class BasicHamiltonCircuitActivity extends AppCompatActivity implements V
         Graph graph = new Graph();
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
         screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
-        Vertex v1 = new Vertex(screenX/2, screenY/8, screenX/12);
-        Vertex v2 = new Vertex(screenX/6, screenY*5/8, screenX/12);
-        Vertex v3 = new Vertex(screenX*5/6, screenY*5/8, screenX/12);
+        Vertex v1 = new Vertex(100, 200, screenX/24);
+        Vertex v2 = new Vertex(400, 300, screenX/24);
+        Vertex v3 = new Vertex(400, 600, screenX/24);
+        Vertex v4 = new Vertex(100, 600, screenX/24);
+        Vertex v5 = new Vertex(300, 350, screenX/24);
+        Vertex v6 = new Vertex(250, 400, screenX/24);
+        Vertex v7 = new Vertex(200, 200, screenX/24);
         graph.addVertex(v1);
         graph.addVertex(v2);
         graph.addVertex(v3);
+        graph.addVertex(v4);
+        graph.addVertex(v5);
+        graph.addVertex(v6);
+        graph.addVertex(v7);
         v1.connect(v2);
-        v2.connect(v3);
-        v3.connect(v1);
         circuit = new HamiltonCircuit(graph);
         layout = (RelativeLayout) findViewById(R.id.activity_hcircuits);
 
@@ -59,15 +65,15 @@ public class BasicHamiltonCircuitActivity extends AppCompatActivity implements V
         }
     }
 
-    public int distance(float x, float y, Vertex v){
+    public boolean overVertex(float x, float y, Vertex v){
         double distX = Math.abs(x - v.getX());
         double distY = Math.abs(y - v.getY());
-        return (int) Math.sqrt(distX*distX + distY*distY);
+        return Math.sqrt(distX*distX + distY*distY) <= 50;
     }
 
     public void activateVertex(float x, float y){
         for(Vertex vrtx: circuit.getGraph().getVertices()){
-            if(distance(x, y, vrtx) <= vrtx.getRadius()){
+            if(overVertex(x,y, vrtx)){
                 circuit.tryActivate(vrtx);
                 checkWon();
             }

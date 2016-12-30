@@ -19,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    protected void make(View w){
+        Intent intent = new Intent(getApplicationContext(), MakeActivity.class);
+        startActivity(intent);
+    }
+
     protected void exit(View w){
         Toast t1 = Toast.makeText(getApplicationContext(), "Exit game here!", Toast.LENGTH_LONG);
         t1.show();

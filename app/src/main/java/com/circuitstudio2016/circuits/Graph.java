@@ -17,4 +17,11 @@ public class Graph {
         vertices.add(v);
     }
 
+    public void removeVertex(Vertex v1){
+        for(Vertex v2: vertices){
+            v1.disconnect(v2);
+        }
+        vertices.remove(v1);
+    }
+
 }
