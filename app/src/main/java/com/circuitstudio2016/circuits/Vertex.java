@@ -2,25 +2,25 @@ package com.circuitstudio2016.circuits;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jacob on 2016-12-27.
- */
-
 public class Vertex {
-    private int marginLeft;
-    private int marginTop;
+    private int x;
+    private int y;
+    private int radius;
     private boolean isActivated;
     private ArrayList<Vertex> connections;
 
-    public Vertex(int x, int y){
-        marginLeft = x;
-        marginTop = y;
+    public Vertex(int x, int y, int radius){
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
         connections = new ArrayList<Vertex>();
     }
 
-    public int getMarginLeft(){ return marginLeft; }
+    public int getX(){ return x; }
 
-    public int getMarginTop(){ return marginTop; }
+    public int getY(){ return y; }
+
+    public int getRadius(){ return radius; }
 
     public boolean isActivated(){
         return isActivated;

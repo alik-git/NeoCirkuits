@@ -1,23 +1,31 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-public class BasicHamiltonCircuitActivity extends AppCompatActivity {
-    HamiltonCircuit circuit;
+public class BasicHamiltonCircuitActivity extends AppCompatActivity implements View.OnTouchListener {
+    private HamiltonCircuit circuit;
+    private DrawView drawView;
+    private RelativeLayout layout;
+    private int screenX, screenY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hcircuits);
         Graph graph = new Graph();
-        Vertex v1 = new Vertex(300, 100);
-        Vertex v2 = new Vertex(100, 800);
-        Vertex v3 = new Vertex(600, 800);
+        screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+        screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
+        Vertex v1 = new Vertex(screenX/2, screenY/8, screenX/12);
+        Vertex v2 = new Vertex(screenX/6, screenY*5/8, screenX/12);
+        Vertex v3 = new Vertex(screenX*5/6, screenY*5/8, screenX/12);
         graph.addVertex(v1);
         graph.addVertex(v2);
         graph.addVertex(v3);
@@ -25,40 +33,66 @@ public class BasicHamiltonCircuitActivity extends AppCompatActivity {
         v2.connect(v3);
         v3.connect(v1);
         circuit = new HamiltonCircuit(graph);
+        layout = (RelativeLayout) findViewById(R.id.activity_hcircuits);
 
-        RelativeLayout layout = (RelativeLayout) findViewById(R.id.activity_hcircuits);
-
-        int count = 0;
-        for(Vertex v: graph.getVertices()) {
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(100, 100);
-            final Button vertex = new Button(this);
-            layout.addView(vertex, lp);
-            vertex.setText(Integer.toString(count));
-            vertex.setX(v.getMarginLeft());
-            vertex.setY(v.getMarginTop());
-            vertex.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    circuit.tryActivate(circuit.getGraph().getVertices().get(Integer.parseInt(vertex.getText().toString())));
-                    checkWon();
-                }
-            });
-            count++;
-        }
+        drawView = new DrawView(this, circuit);
+        drawView.setBackgroundColor(Color.WHITE);
+        drawView.setOnTouchListener(this);
+        layout.addView(drawView);
     }
 
     public void checkWon(){
         if(circuit.isFinished()){
-            System.out.println("good job!");
+            Button endButton = new Button(this);
+            endButton.setText("Go Back");
+            endButton.setX(screenX/3);
+            endButton.setY(screenY*2/5);
+            endButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+                    startActivity(intent);
+                }
+            });
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(screenX/3, screenY/12);
+            layout.addView(endButton, lp);
         }
     }
 
-    //show vertices on screen
+    public int distance(float x, float y, Vertex v){
+        double distX = Math.abs(x - v.getX());
+        double distY = Math.abs(y - v.getY());
+        return (int) Math.sqrt(distX*distX + distY*distY);
+    }
 
-    //draw lines between last Vertex and current location
-    //and between "activated" vertices
+    public void activateVertex(float x, float y){
+        for(Vertex vrtx: circuit.getGraph().getVertices()){
+            if(distance(x, y, vrtx) <= vrtx.getRadius()){
+                circuit.tryActivate(vrtx);
+                checkWon();
+            }
+        }
+    }
 
-    //mouse over a vertex will call circuit.tryActivate(Vertex)
-
-    //lift finger will call circuit.reset()
+    @Override
+    public boolean onTouch(View v, MotionEvent e) {
+        if(!circuit.isFinished()) {
+            switch (e.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    drawView.setMouseLocation(e.getX(), e.getY());
+                    activateVertex(e.getX(), e.getY());
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    drawView.setMouseLocation(e.getX(), e.getY());
+                    activateVertex(e.getX(), e.getY());
+                    break;
+                case MotionEvent.ACTION_UP:
+                    circuit.reset();
+                    break;
+            }
+            drawView.invalidate();
+        }
+        return true;
+    }
 
 }

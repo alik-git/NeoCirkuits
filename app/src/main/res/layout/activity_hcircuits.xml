@@ -3,13 +3,4 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/activity_hcircuits">
 
-    <TextView
-        android:text="GRAPH GOES HERE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/graph_placeHolder"
-        android:layout_marginTop="38dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

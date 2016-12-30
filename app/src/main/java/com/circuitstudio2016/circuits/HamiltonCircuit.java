@@ -1,11 +1,5 @@
 package com.circuitstudio2016.circuits;
 
-import java.util.ArrayList;
-
-/**
- * Created by Jacob on 2016-12-27.
- */
-
 public class HamiltonCircuit extends HamiltonPath{
 
     public HamiltonCircuit(Graph graph){
@@ -19,11 +13,10 @@ public class HamiltonCircuit extends HamiltonPath{
     }
 
     public void tryActivate(Vertex v){
-        System.out.println("PRESSED! AND ACTIVATED!");// for testing
-        super.tryActivate(v);
         if(super.isFinished() && v == getActivated().get(0)){
             activate(v);
         }
+        super.tryActivate(v);
     }
 
     public boolean isFinished(){

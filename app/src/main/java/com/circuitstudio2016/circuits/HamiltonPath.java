@@ -2,10 +2,6 @@ package com.circuitstudio2016.circuits;
 
 import java.util.ArrayList;
 
-/**
- * Created by Jacob on 2016-12-27.
- */
-
 public class HamiltonPath {
     private Graph graph;
     private ArrayList<Vertex> activated; // list of vertices that have been drawn over. (in order)
@@ -23,6 +19,9 @@ public class HamiltonPath {
     }
     public void reset(){
         activated = new ArrayList<Vertex>();
+        for(Vertex v: graph.getVertices()){
+            v.setActivated(false);
+        }
     }
 
 
