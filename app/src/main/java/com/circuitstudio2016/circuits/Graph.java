@@ -1,13 +1,60 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.res.Resources;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Graph {
+public class Graph implements Parcelable{
     private ArrayList<Vertex> vertices;
 
     public Graph(){
         vertices = new ArrayList<Vertex>();
     }
+
+    protected Graph(Parcel in) {
+        vertices = in.readArrayList(Vertex.class.getClassLoader());
+        ArrayList<ArrayList<Integer>> allConnections = in.readArrayList(ArrayList.class.getClassLoader());
+        for(int v = 0; v < allConnections.size(); v++){
+            for(int c: allConnections.get(v)){
+                vertices.get(v).connect(vertices.get(c));
+            }
+        }
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeList(vertices);
+        ArrayList<ArrayList<Integer>> allConnections = new ArrayList<ArrayList<Integer>>();
+        for(Vertex v: vertices){
+            ArrayList<Integer> vertexConnections = new ArrayList<Integer>();
+            for(int i = 0; i < vertices.size(); i++){
+                if(v.isConnected(vertices.get(i))){
+                    vertexConnections.add(i);
+                }
+            }
+            allConnections.add(vertexConnections);
+        }
+        dest.writeList(allConnections);
+    }
+
+    @Override
+    public int describeContents() {
+        return vertices.size();
+    }
+
+    public static final Creator<Graph> CREATOR = new Creator<Graph>() {
+        @Override
+        public Graph createFromParcel(Parcel in) {
+            return new Graph(in);
+        }
+
+        @Override
+        public Graph[] newArray(int size) {
+            return new Graph[size];
+        }
+    };
 
     public ArrayList<Vertex> getVertices(){
         return vertices;
@@ -22,6 +69,22 @@ public class Graph {
             v1.disconnect(v2);
         }
         vertices.remove(v1);
+    }
+
+    public static Graph makeSimpleGraph(){
+        int screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
+        Graph graph = new Graph();
+        Vertex v1 = new Vertex(screenX/2, screenY/7, screenX/24);
+        Vertex v2 = new Vertex(screenX/3, screenY*5/7, screenX/24);
+        Vertex v3 = new Vertex(screenX*2/3, screenY*5/7, screenX/24);
+        graph.addVertex(v1);
+        graph.addVertex(v2);
+        graph.addVertex(v3);
+        v1.connect(v2);
+        v2.connect(v3);
+        v3.connect(v1);
+        return graph;
     }
 
 }

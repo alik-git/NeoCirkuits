@@ -1,8 +1,11 @@
 package com.circuitstudio2016.circuits;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Vertex {
+public class Vertex implements Parcelable{
     private int x;
     private int y;
     private int radius;
@@ -15,6 +18,39 @@ public class Vertex {
         this.radius = radius;
         connections = new ArrayList<Vertex>();
     }
+
+    protected Vertex(Parcel in) {
+        x = in.readInt();
+        y = in.readInt();
+        radius = in.readInt();
+        isActivated = in.readByte() != 0;
+        connections = new ArrayList<Vertex>();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(x);
+        dest.writeInt(y);
+        dest.writeInt(radius);
+        dest.writeByte((byte) (isActivated ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Vertex> CREATOR = new Creator<Vertex>() {
+        @Override
+        public Vertex createFromParcel(Parcel in) {
+            return new Vertex(in);
+        }
+
+        @Override
+        public Vertex[] newArray(int size) {
+            return new Vertex[size];
+        }
+    };
 
     public int getX(){ return x; }
 

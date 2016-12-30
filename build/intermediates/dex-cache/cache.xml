@@ -7,26 +7,8 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="14aa9b39be5ffbb437fe5dbbbf47fc0b31a52685">
+        sha1="82da805bd84527854a8362cfcadb931dee9e78ca">
         <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_dabf0f89cc8d7e933e5e772c5bbe3f3b18d86ff1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_732a4a9f7adb8c0f4190852cf6e1ec1de052d4e3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_57214f1580b71196664f6dbffcd33e1b8aaeb93c/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -48,24 +30,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="4e491b358920c3f8a8fc079d1a97197d94d65045">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_a2165477301d050f287a6cc2ceef9c6be1de8546/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_69b374f6030a559d9ffaeb7a96a854e12284aaff/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -84,6 +48,51 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_ae0c6aa22a7477b0f80731de8659dd635f1eadfe/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Jacob/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_732a4a9f7adb8c0f4190852cf6e1ec1de052d4e3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_57214f1580b71196664f6dbffcd33e1b8aaeb93c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b8224f707ea8f67e06c68c94f5b163a6e65cad13">
+        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_a2165477301d050f287a6cc2ceef9c6be1de8546/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_69b374f6030a559d9ffaeb7a96a854e12284aaff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -99,15 +108,6 @@
         revision="25.0.2"
         sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
         <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_08f63914f167f206b209e9447e6f3b4a88abfa51/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_ae0c6aa22a7477b0f80731de8659dd635f1eadfe/classes.dex" />
     </item>
 
 </items>

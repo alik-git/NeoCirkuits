@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 public class PlayActivity extends AppCompatActivity {
 
@@ -15,13 +14,23 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     protected void hCircuits(View w){
-        Intent intent = new Intent(getApplicationContext(), BasicHamiltonCircuitActivity.class);
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("graph", Graph.makeSimpleGraph());
+        intent.putExtras(bundle);
+        intent.setClass(this, HamiltonActivity.class);
+        intent.setAction("circuit");
         startActivity(intent);
     }
 
     protected void hPaths(View w){
-        Toast t1 = Toast.makeText(getApplicationContext(), "Start H paths!", Toast.LENGTH_LONG);
-        t1.show();
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("graph", Graph.makeSimpleGraph());
+        intent.putExtras(bundle);
+        intent.setClass(this, HamiltonActivity.class);
+        intent.setAction("path");
+        startActivity(intent);
     }
 
 }
