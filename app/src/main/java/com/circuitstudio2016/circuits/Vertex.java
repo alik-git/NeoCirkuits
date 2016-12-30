@@ -1,18 +1,24 @@
 package com.circuitstudio2016.circuits;
 
+import android.graphics.Color;
+
 import java.util.ArrayList;
 
 public class Vertex {
     private int x;
     private int y;
     private int radius;
+    private int color;
     private boolean isActivated;
     private ArrayList<Vertex> connections;
+
+
 
     public Vertex(int x, int y, int radius){
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.color = Color.RED;
         connections = new ArrayList<Vertex>();
     }
 
@@ -22,12 +28,16 @@ public class Vertex {
 
     public int getRadius(){ return radius; }
 
+    public int getColor() { return color; }
+
     public boolean isActivated(){
         return isActivated;
     }
 
     public void setActivated(Boolean b){
         this.isActivated = b;
+        if (b) {this.color = Color.GREEN;}
+        else   {this.color = Color.RED;}
     }
 
     private void addConnection(Vertex other){

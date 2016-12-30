@@ -51,7 +51,7 @@ public class DrawView extends View {
         // draw all vertices
         for(Vertex v: path.getGraph().getVertices()) {
             paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.GREEN);
+            paint.setColor(v.getColor());
             canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.BLACK);
