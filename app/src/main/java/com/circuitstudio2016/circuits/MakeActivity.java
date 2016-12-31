@@ -1,6 +1,7 @@
 package com.circuitstudio2016.circuits;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private MakeDrawView drawView;
     private Vertex prev;
     private RelativeLayout layout;
+    int screenX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         drawView.setOnTouchListener(this);
         drawView.setOnKeyListener(this);
         layout.addView(drawView);
+        screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 
     public void testPath(View w){
@@ -67,15 +70,15 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
 
     public boolean nearAnyVertex(float x, float y){
         for(Vertex v: graph.getVertices()) {
-            if(distance(x, y, v) <= 200){
+            if(nearVertex(x, y, v)){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean overVertex(float x, float y, Vertex v){
-        if(distance(x, y, v) <= 100){
+    public boolean nearVertex(float x, float y, Vertex v){
+        if(distance(x, y, v) <= screenX/12){
             return true;
         }
         return false;
@@ -98,19 +101,19 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if(!nearAnyVertex(e.getX(), e.getY())){
-                    Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), 100);
+                    Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
                     graph.addVertex(vrtx);
                     prev = vrtx;
                 }
                 for(Vertex vrtx: graph.getVertices()){
-                    if(overVertex(e.getX(), e.getY(), vrtx)){
+                    if(nearVertex(e.getX(), e.getY(), vrtx)){
                         prev = vrtx;
                     }
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
                 for(Vertex vrtx: graph.getVertices()) {
-                    if (overVertex(e.getX(), e.getY(), vrtx) && prev != null && vrtx != prev) {
+                    if (nearVertex(e.getX(), e.getY(), vrtx) && prev != null && vrtx != prev) {
                         if(!vrtx.isConnected(prev)) {
                             vrtx.connect(prev);
                         }

@@ -29,6 +29,7 @@ public class Vertex implements Parcelable{
         x = in.readInt();
         y = in.readInt();
         radius = in.readInt();
+        color = in.readInt();
         isActivated = in.readByte() != 0;
         connections = new ArrayList<Vertex>();
     }
@@ -38,6 +39,7 @@ public class Vertex implements Parcelable{
         dest.writeInt(x);
         dest.writeInt(y);
         dest.writeInt(radius);
+        dest.writeInt(color);
         dest.writeByte((byte) (isActivated ? 1 : 0));
     }
 

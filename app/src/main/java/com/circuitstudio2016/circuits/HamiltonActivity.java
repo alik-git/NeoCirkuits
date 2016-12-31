@@ -36,7 +36,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
 
         layout = (RelativeLayout) findViewById(R.id.activity_hcircuits);
 
-        drawView = new DrawView(this, circuit);
+        drawView = new DrawView(this, path);
         drawView.setBackgroundColor(Color.WHITE);
         drawView.setOnTouchListener(this);
         layout.addView(drawView);
@@ -65,15 +65,15 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         }
     }
 
-    public boolean overVertex(float x, float y, Vertex v){
+    public boolean nearVertex(float x, float y, Vertex v){
         double distX = Math.abs(x - v.getX());
         double distY = Math.abs(y - v.getY());
-        return Math.sqrt(distX*distX + distY*distY) <= 50;
+        return Math.sqrt(distX*distX + distY*distY) <= v.getRadius()*2;
     }
 
     public void activateVertex(float x, float y){
         for(Vertex vrtx: path.getGraph().getVertices()){
-            if(overVertex(x,y, vrtx)){
+            if(nearVertex(x,y, vrtx)){
                 path.tryActivate(vrtx);
                 checkWon();
             }

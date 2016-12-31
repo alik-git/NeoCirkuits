@@ -40,7 +40,7 @@ public class MakeDrawView extends View {
         // draw all vertices
         for(Vertex v: graph.getVertices()) {
             paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.GREEN);
+            paint.setColor(v.getColor());
             canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.BLACK);
@@ -49,7 +49,7 @@ public class MakeDrawView extends View {
             if(boundary) {
                 paint.setColor(Color.RED);
                 paint.setStrokeWidth(1);
-                canvas.drawCircle(v.getX(), v.getY(), 200, paint);
+                canvas.drawCircle(v.getX(), v.getY(), v.getRadius()*2, paint);
             }
         }
     }
