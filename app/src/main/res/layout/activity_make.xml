@@ -4,16 +4,6 @@
     android:id="@+id/activity_make">
 
     <Button
-        android:text="toggle boundary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/boundary_button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="toggleBoundary" />
-
-    <Button
         android:text="CIRCUIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,4 +22,17 @@
         android:layout_toEndOf="@+id/test_circuit"
         android:id="@+id/test_path"
         android:onClick="testPath" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/boundary_button"
+        android:onClick="toggleBoundary"
+        android:textOn="Boundary On"
+        android:textOff="Boundary Off"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:checked="false" />
+
 </RelativeLayout>

@@ -42,7 +42,8 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void test(String type){
-        if(isProperGraph()) {
+        //if(isProperGraph()) {
+        //I commented out your tester for now -Ali
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
             bundle.putParcelable("graph", graph);
@@ -50,11 +51,11 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             intent.setClass(this, HamiltonTestActivity.class);
             intent.setAction(type);
             startActivity(intent);
-        }
-        else{
+        //}
+        /*else{
             Toast t1 = Toast.makeText(getApplicationContext(), "2 connections minimum", Toast.LENGTH_LONG);
             t1.show();
-        }
+        }*/
     }
 
     public void toggleBoundary(View w){

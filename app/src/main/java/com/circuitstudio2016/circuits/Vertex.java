@@ -18,8 +18,9 @@ public class Vertex implements Parcelable{
 
 
     public Vertex(int x, int y, int radius){
-        this.x = x;
-        this.y = y;
+        //this snaps the vertices to the grid-lines
+        this.x = (90*(Math.round(x/90))+90);
+        this.y = (90*(Math.round(y/90))+45);
         this.radius = radius;
         this.color = Color.RED;
         connections = new ArrayList<Vertex>();
