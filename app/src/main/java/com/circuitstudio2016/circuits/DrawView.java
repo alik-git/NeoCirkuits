@@ -33,6 +33,7 @@ public class DrawView extends View {
             canvas.drawLine(v.getX(), v.getY(), mouseX, mouseY, paint);
         }
         // draw all connection
+
         for(Vertex v: path.getGraph().getVertices()) {
             for (Vertex vc : v.getConnections()) {
                 paint.setStrokeWidth(2);

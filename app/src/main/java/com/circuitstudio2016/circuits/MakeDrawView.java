@@ -49,7 +49,7 @@ public class MakeDrawView extends View {
             if(boundary) {
                 paint.setColor(Color.RED);
                 paint.setStrokeWidth(1);
-                canvas.drawCircle(v.getX(), v.getY(), 100, paint);
+                canvas.drawCircle(v.getX(), v.getY(), 200, paint);
             }
         }
     }
