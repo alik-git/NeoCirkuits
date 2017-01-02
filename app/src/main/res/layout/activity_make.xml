@@ -35,4 +35,15 @@
         android:layout_alignParentEnd="true"
         android:checked="false" />
 
+    <Button
+        android:text="UNDO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/undo_button"
+        android:onClick="undo" />
+
 </RelativeLayout>

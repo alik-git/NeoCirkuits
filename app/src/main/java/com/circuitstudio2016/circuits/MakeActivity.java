@@ -12,12 +12,15 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class MakeActivity extends AppCompatActivity implements View.OnTouchListener, View.OnKeyListener{
+import java.util.ArrayList;
+
+public class MakeActivity extends AppCompatActivity implements View.OnTouchListener {
     private Graph graph;
     private MakeDrawView drawView;
     private Vertex prev;
     private RelativeLayout layout;
-    int screenX;
+    private int screenX;
+    private ArrayList<UndoCommand> undos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         drawView = new MakeDrawView(this, graph);
         drawView.setBackgroundColor(Color.WHITE);
         drawView.setOnTouchListener(this);
-        drawView.setOnKeyListener(this);
         layout.addView(drawView);
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+        undos = new ArrayList<UndoCommand>();
     }
 
     public void testPath(View w){
@@ -104,6 +107,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
                 if(!nearAnyVertex(e.getX(), e.getY())){
                     Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
                     graph.addVertex(vrtx);
+                    undos.add(new UndoVertex(vrtx, graph));
                     prev = vrtx;
                 }
                 for(Vertex vrtx: graph.getVertices()){
@@ -117,6 +121,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
                     if (nearVertex(e.getX(), e.getY(), vrtx) && prev != null && vrtx != prev) {
                         if(!vrtx.isConnected(prev)) {
                             vrtx.connect(prev);
+                            undos.add(new UndoConnection(vrtx, prev));
                         }
                         prev = vrtx;
                     }
@@ -130,19 +135,11 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         return true;
     }
 
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent e) {
-        Log.i("key","" + keyCode);
-        System.out.println(keyCode);
-        if (keyCode == KeyEvent.KEYCODE_SPACE) {
-            if (e.getAction() == KeyEvent.ACTION_DOWN ) {
-                if(graph.getVertices().size() >= 1){
-                    graph.removeVertex(graph.getVertices().get(graph.getVertices().size()-1));
-                    drawView.invalidate();
-                }
-            }
-            return true;
+    public void undo(View v) {
+        if (!undos.isEmpty()) {
+            undos.get(undos.size()-1).execute();
+            undos.remove(undos.size()-1);
+            drawView.invalidate();
         }
-        return false;
     }
 }
