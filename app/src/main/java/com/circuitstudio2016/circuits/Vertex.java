@@ -5,9 +5,10 @@ import android.os.Parcelable;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Vertex implements Parcelable{
+public class Vertex implements Parcelable, Serializable{
     private int x;
     private int y;
     private int radius;
@@ -73,6 +74,8 @@ public class Vertex implements Parcelable{
         return isActivated;
     }
 
+    public void setColor(int c) { this.color = c; }
+
     public void setActivated(Boolean b){
         this.isActivated = b;
         if (b) {this.color = Color.GREEN;}
@@ -110,4 +113,11 @@ public class Vertex implements Parcelable{
         return false;
     }
 
+    public String toString(){
+        String s = "";
+        s+= "x: " + x;
+        s+= "y: " + y;
+        s+= "connections: " + connections.size();
+        return s;
+    }
 }

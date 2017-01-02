@@ -1,17 +1,25 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MakeActivity extends AppCompatActivity implements View.OnTouchListener {
@@ -134,6 +142,45 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         drawView.invalidate();
         return true;
     }
+
+    public void save(View w){
+        FileOutputStream fos = null;
+        try {
+            fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(graph);
+            oos.close();
+            fos.close();
+            System.out.println("saved");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("excepted");
+        }
+    }
+
+    public void load(View w){
+        try {
+            FileInputStream fis = this.openFileInput("graphsaves");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            graph = (Graph) ois.readObject();
+            ois.close();
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        drawView.invalidate();
+    }
+
+    /*private void writeToFile(String data,Context context) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("graphsaves.txt", Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }*/
 
     public void undo(View v) {
         if (!undos.isEmpty()) {

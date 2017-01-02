@@ -13,7 +13,7 @@ public class HamiltonCircuit extends HamiltonPath{
     }
 
     public void tryActivate(Vertex v){
-        if(super.isFinished() && v == getActivated().get(0)){
+        if(super.isFinished() && v == getActivated().get(0) && v.isConnected(getActivated().get(getActivated().size()-1))){
             activate(v);
         }
         super.tryActivate(v);

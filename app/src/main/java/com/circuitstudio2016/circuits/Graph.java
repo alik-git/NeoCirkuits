@@ -4,9 +4,10 @@ import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Graph implements Parcelable{
+public class Graph implements Parcelable, Serializable{
     private ArrayList<Vertex> vertices;
 
     public Graph(){
@@ -85,6 +86,14 @@ public class Graph implements Parcelable{
         v2.connect(v3);
         v3.connect(v1);
         return graph;
+    }
+
+    public String toString(){
+        String s = "Graph: ";
+        for(Vertex v: vertices){
+            s += v.toString();
+        }
+        return s;
     }
 
 }

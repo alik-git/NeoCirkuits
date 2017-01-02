@@ -50,6 +50,9 @@ public class DrawView extends View {
             canvas.drawLine(v1.getX(), v1.getY(), v2.getX(), v2.getY(), paint);
         }
         // draw all vertices
+        if(!path.getActivated().isEmpty()) {
+            path.getActivated().get(0).setColor(Color.BLUE);
+        }
         for(Vertex v: path.getGraph().getVertices()) {
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(v.getColor());

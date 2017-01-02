@@ -48,7 +48,7 @@ public class MakeDrawView extends View {
             //make some lines bold for help
             if (Arrays.asList(strokeX).contains(x2)) { paint.setStrokeWidth(3);}
             canvas.drawLine(x+45, 90, x+45, 1350, paint);
-            System.out.println((x+45) + "   " + x/90);
+            //System.out.println((x+45) + "   " + x/90);
         }
 
         //horizontal lines

@@ -46,4 +46,24 @@
         android:id="@+id/undo_button"
         android:onClick="undo" />
 
+    <Button
+        android:text="SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/test_path"
+        android:layout_toStartOf="@+id/test_path"
+        android:id="@+id/save_button"
+        android:onClick="save" />
+
+    <Button
+        android:text="LOAD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/undo_button"
+        android:layout_alignRight="@+id/save_button"
+        android:layout_alignEnd="@+id/save_button"
+        android:id="@+id/load_button"
+        android:onClick="load" />
+
 </RelativeLayout>
