@@ -31,6 +31,8 @@ public class MakeDrawView extends View {
         }
     }
 
+    public void setGraph(Graph graph){ this.graph = graph; }
+
     @Override
     public void onDraw(Canvas canvas) {
         //draw gridlines

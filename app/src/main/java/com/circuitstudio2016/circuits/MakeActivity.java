@@ -163,24 +163,14 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             FileInputStream fis = this.openFileInput("graphsaves");
             ObjectInputStream ois = new ObjectInputStream(fis);
             graph = (Graph) ois.readObject();
+            drawView.setGraph(graph);
+            drawView.invalidate();
             ois.close();
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        drawView.invalidate();
     }
-
-    /*private void writeToFile(String data,Context context) {
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("graphsaves.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(data);
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }*/
 
     public void undo(View v) {
         if (!undos.isEmpty()) {
