@@ -67,8 +67,8 @@ public class MakeDrawView extends View {
         // draw all connection
         for(Vertex v: graph.getVertices()) {
             for (Vertex vc : v.getConnections()) {
-                paint.setStrokeWidth(2);
-                paint.setColor(Color.BLACK);
+                paint.setStrokeWidth(10);
+                paint.setColor(Color.RED);
                 canvas.drawLine(v.getX(), v.getY(), vc.getX(), vc.getY(), paint);
             }
         }
@@ -77,9 +77,9 @@ public class MakeDrawView extends View {
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(v.getColor());
             canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setColor(Color.BLACK);
-            paint.setStrokeWidth(4);
+//            paint.setStyle(Paint.Style.STROKE);
+//            paint.setColor(Color.BLACK);
+//            paint.setStrokeWidth(4);
             canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
             if(boundary) {
                 paint.setColor(Color.RED);

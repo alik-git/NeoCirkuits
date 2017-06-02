@@ -204,7 +204,6 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         builder.setTitle("Deleting Graph");
         builder.setMessage("Are you sure you want to clear the canvas?\n" +
             "All unsaved work will be lost.");
-        //builder.setIcon(R.drawable.delete);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
