@@ -4,12 +4,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HamiltonTestActivity extends HamiltonActivity {
+    private String message;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        message = "";
+        if (this.getIntent().hasExtra("message")) {
+            message = this.getIntent().getStringExtra("message");
+        }
 
         //make button
         Button endButton = new Button(this);
@@ -24,6 +31,14 @@ public class HamiltonTestActivity extends HamiltonActivity {
         });
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
         getLayout().addView(endButton, lp);
+
+        //make message
+        TextView messageView = new TextView(this);
+        messageView.setTextSize(25);
+        messageView.setText(message);
+        messageView.setX(screenX/2);
+        messageView.setY(50);
+        getLayout().addView(messageView, lp);
     }
 
     public void checkWon(){

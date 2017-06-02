@@ -1,9 +1,11 @@
 package com.circuitstudio2016.circuits;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +31,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private RelativeLayout layout;
     private int screenX;
     private ArrayList<UndoCommand> undos;
-    private ArrayList<Graph> graphs;
+    private GraphList graphs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         layout.addView(drawView);
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
         undos = new ArrayList<UndoCommand>();
-        graphs = new ArrayList<Graph>();
+        graphs = new GraphList();
     }
 
     public void testPath(View w){
@@ -150,7 +152,8 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         try {
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            graphs.add(graph);
+            Graph gcopy = new Graph(graph);
+            graphs.addGraph(gcopy);
             System.out.println("added graph to list" + graphs);
             oos.writeObject(graphs);
             oos.close();
@@ -166,8 +169,8 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         try {
             FileInputStream fis = this.openFileInput("graphsaves");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            graphs = (ArrayList<Graph>) ois.readObject();
-            graph = graphs.remove(graphs.size() - 2);
+            graphs = (GraphList) ois.readObject();
+            graph = graphs.getGraph(graphs.getSize() - 2);
             drawView.setGraph(graph);
             drawView.invalidate();
             ois.close();
@@ -178,8 +181,46 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void better_load(View w) {
-        Intent intent = new Intent(this, LoadActivity.class);
-        startActivity(intent);
+        try {
+            FileInputStream fis = this.openFileInput("graphsaves");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            graphs = (GraphList) ois.readObject();
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("graphs", graphs);
+            intent.putExtras(bundle);
+            intent.setClass(this, LoadActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    public void clear(View w) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Deleting Graph");
+        builder.setMessage("Are you sure you want to clear the canvas?\n" +
+            "All unsaved work will be lost.");
+        //builder.setIcon(R.drawable.delete);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                graph = new Graph();
+                drawView.setGraph(graph);
+                drawView.invalidate();
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void undo(View v) {

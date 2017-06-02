@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Button"
+        android:onClick="graph1"
+        android:text="Graph 1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,56 +21,66 @@
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintLeft_toRightOf="@+id/button"
         android:layout_marginLeft="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:onClick="graph2"
+        android:text="Graph 2"
+        app:layout_constraintLeft_toRightOf="@+id/button"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="graph3"
+        android:text="Graph 3"
         app:layout_constraintLeft_toRightOf="@+id/button7"
-        android:layout_marginLeft="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="16dp"
+        android:onClick="graph4"
+        android:text="Graph 4"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteY="80dp"
-        tools:layout_editor_absoluteX="120dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="graph5"
+        android:text="Graph 5"
+        app:layout_constraintLeft_toRightOf="@+id/button9"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
 
     <Button
         android:id="@+id/button11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteY="80dp"
-        tools:layout_editor_absoluteX="224dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="graph6"
+        android:text="Graph 6"
+        app:layout_constraintLeft_toRightOf="@+id/button10"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
 
     <Button
         android:id="@+id/button12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="16dp"
+        android:onClick="graph7"
+        android:text="Graph 7"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
 
     <Button
@@ -77,8 +88,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteY="208dp"
-        tools:layout_editor_absoluteX="224dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/button15"
+        app:layout_constraintLeft_toRightOf="@+id/button17"
+        android:layout_marginLeft="16dp" />
 
     <Button
         android:id="@+id/button14"
@@ -94,23 +107,31 @@
         android:id="@+id/button15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteY="144dp"
-        tools:layout_editor_absoluteX="224dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="graph9"
+        android:text="Graph 9"
+        app:layout_constraintLeft_toRightOf="@+id/button16"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
 
     <Button
         android:id="@+id/button16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteY="144dp"
-        tools:layout_editor_absoluteX="120dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="graph8"
+        android:text="Graph 8"
+        app:layout_constraintLeft_toRightOf="@+id/button12"
+        app:layout_constraintTop_toBottomOf="@+id/button10" />
 
     <Button
         android:id="@+id/button17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteY="208dp"
-        tools:layout_editor_absoluteX="120dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/button16"
+        app:layout_constraintLeft_toRightOf="@+id/button14"
+        android:layout_marginLeft="16dp" />
 </android.support.constraint.ConstraintLayout>

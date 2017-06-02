@@ -15,6 +15,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
     private DrawView drawView;
     private RelativeLayout layout;
     int screenX, screenY;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         else{
             init( new HamiltonPath(graph));
         }
+
+
     }
 
     public void init(HamiltonPath path){

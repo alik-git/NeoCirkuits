@@ -78,4 +78,15 @@
         android:onClick="better_load"
         android:textStyle="italic" />
 
+    <Button
+        android:id="@+id/button18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/undo_button"
+        android:layout_marginTop="14dp"
+        android:onClick="clear"
+        android:text="Clear" />
+
 </RelativeLayout>

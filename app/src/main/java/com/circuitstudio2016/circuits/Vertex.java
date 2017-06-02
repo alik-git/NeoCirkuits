@@ -27,6 +27,14 @@ public class Vertex implements Parcelable, Serializable{
         connections = new ArrayList<Vertex>();
     }
 
+    public Vertex(Vertex v) {
+        this.x = v.getX();
+        this.y = v.getY();
+        this.radius = v.getRadius();
+        this.color = v.getColor();
+        connections = new ArrayList<Vertex>();
+    }
+
     protected Vertex(Parcel in) {
         x = in.readInt();
         y = in.readInt();

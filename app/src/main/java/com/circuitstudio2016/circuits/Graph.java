@@ -14,6 +14,31 @@ public class Graph implements Parcelable, Serializable{
         vertices = new ArrayList<Vertex>();
     }
 
+    public Graph(Graph g) {
+        vertices = new ArrayList<Vertex>();
+        for (Vertex v: g.vertices) {
+            Vertex copy = new Vertex(v);
+            vertices.add(copy);
+        }
+
+        ArrayList<ArrayList<Integer>> allConnections = new ArrayList<ArrayList<Integer>>();
+        for(Vertex v: g.vertices){
+            ArrayList<Integer> vertexConnections = new ArrayList<Integer>();
+            for(int i = 0; i < g.vertices.size(); i++){
+                if(v.isConnected(g.vertices.get(i))){
+                    vertexConnections.add(i);
+                }
+            }
+            allConnections.add(vertexConnections);
+        }
+
+        for(int v = 0; v < allConnections.size(); v++){
+            for(int c: allConnections.get(v)){
+                vertices.get(v).connect(vertices.get(c));
+            }
+        }
+    }
+
     protected Graph(Parcel in) {
         vertices = in.readArrayList(Vertex.class.getClassLoader());
         ArrayList<ArrayList<Integer>> allConnections = in.readArrayList(ArrayList.class.getClassLoader());
@@ -89,7 +114,9 @@ public class Graph implements Parcelable, Serializable{
     }
 
     public String toString(){
-        String s = "Graph: ";
+        String s = "Graph(";
+        s += Integer.toString(vertices.size());
+        s += "): ";
         for(Vertex v: vertices){
             s += v.toString();
         }
