@@ -14,17 +14,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    protected void play(View w){
-        Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+    public void play(View w){
+        Intent intent = new Intent(this, PlayActivity.class);
         startActivity(intent);
     }
 
-    protected void make(View w){
-        Intent intent = new Intent(getApplicationContext(), MakeActivity.class);
+    public void make(View w){
+        Intent intent = new Intent(this, MakeActivity.class);
         startActivity(intent);
     }
 
-    protected void exit(View w){
+    public void exit(View w){
         Toast t1 = Toast.makeText(getApplicationContext(), "Exit game here!", Toast.LENGTH_LONG);
         t1.show();
     }

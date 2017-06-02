@@ -27,7 +27,7 @@
         android:layout_marginEnd="15dp" />
 
     <Button
-        android:text="Play"
+        android:text="@string/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button1"
@@ -37,7 +37,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Make"
+        android:text="@string/make"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
@@ -48,7 +48,7 @@
         android:onClick="make" />
 
     <Button
-        android:text="About"
+        android:text="@string/about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button3"
@@ -58,7 +58,7 @@
         android:layout_alignStart="@+id/button2" />
 
     <Button
-        android:text="Exit"
+        android:text="@string/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button4"
@@ -69,7 +69,7 @@
         android:layout_marginTop="24dp" />
 
     <Button
-        android:text="Settings"
+        android:text="@string/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"

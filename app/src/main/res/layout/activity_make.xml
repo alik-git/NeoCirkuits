@@ -7,11 +7,11 @@
         android:text="CIRCUIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/test_circuit"
+        android:onClick="testCircuit"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/test_circuit"
-        android:onClick="testCircuit" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="PATH"
@@ -60,10 +60,22 @@
         android:text="LOAD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/undo_button"
-        android:layout_alignRight="@+id/save_button"
-        android:layout_alignEnd="@+id/save_button"
         android:id="@+id/load_button"
-        android:onClick="load" />
+        android:onClick="load"
+        android:layout_below="@+id/undo_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/better_load_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/load_button"
+        android:layout_alignRight="@+id/load_button"
+        android:layout_below="@+id/load_button"
+        android:layout_marginTop="11dp"
+        android:text="B Load"
+        android:onClick="better_load"
+        android:textStyle="italic" />
 
 </RelativeLayout>

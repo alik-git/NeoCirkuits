@@ -2,112 +2,112 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="889942bcfb6fb801ede3a09e3bcad1fb343b4ae6">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_dabf0f89cc8d7e933e5e772c5bbe3f3b18d86ff1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.0_2d5e50697cc1ee8efbb60fc07d65d76de3ac2132/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.0_78eb4bb831284b6e842d55e8b9e6b742ef38e0b1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.0_1db70919af2ef66ca8b897256191f89f183f6509/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.0_e129689d7507e0855dc19560ecc299045a037900/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_ae0c6aa22a7477b0f80731de8659dd635f1eadfe/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_732a4a9f7adb8c0f4190852cf6e1ec1de052d4e3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_57214f1580b71196664f6dbffcd33e1b8aaeb93c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3ebead753948a9be0144bbce8d8ca87237408fbe">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_a2165477301d050f287a6cc2ceef9c6be1de8546/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_69b374f6030a559d9ffaeb7a96a854e12284aaff/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_e68c9f40b5d030c8264cdeda7d7010bcfd3fe2a7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="/Users/Jacob/AndroidStudioProjects/Circuits/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_08f63914f167f206b209e9447e6f3b4a88abfa51/classes.dex" />
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.1.0_bf4a3f64d5fe5e9306d91e519ec958b9e6c4e475.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.1.0_8018f612fe03a88ce6878cae6dbedc20af1d98e8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.1.0_09896fb094559f2299d23ecdb60b14a5fdab4d92.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.1.0_b4a0e07b41b39f9a7566d543220eca471699fd42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_ebbc3d8b20a7a1016e53e960479a63112c148e64.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.1.0_b023444e8216b85fb74c848e48503291a80c20d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.1.0_2b20503920d99fe013787762e3b7749ba11334d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\support-annotations-25.1.0_816492e2ed9f03302573e5d60c1e44d274de14e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.1.0_468ef6a57c0d086d4e9eb66a08a9f2669a412e94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.1.0_e02725df57fd2f9c667cc0ec86399f10dd16abc7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support.constraint\constraint-layout\1.0.2\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support.constraint-constraint-layout-1.0.2_e305c503a9448baea7cf65032ed64843d52e0e36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="C:\Users\aliqk\StudioProjects\Circuits\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.1.0_9cf88a4c3cac6b7900f22c68f493720c0a820b8a.jar" />
     </item>
 
 </items>

@@ -15,34 +15,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlayActivity" >
+        <activity android:name=".PlayActivity">
             <intent-filter>
                 <action android:name="android.intent.action.PLAY" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HamiltonActivity" >
+        <activity android:name=".HamiltonActivity">
             <intent-filter>
                 <action android:name="android.intent.action.HCIRCUIT" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MakeActivity" >
+        <activity android:name=".MakeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAKE" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HamiltonTestActivity" >
+        <activity android:name=".HamiltonTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.HamiltonTest" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoadActivity"></activity>
     </application>
 
 </manifest>

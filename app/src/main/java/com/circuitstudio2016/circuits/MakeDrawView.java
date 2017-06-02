@@ -19,7 +19,7 @@ public class MakeDrawView extends View {
         super(context);
         paint.setColor(Color.BLACK);
         this.graph = graph;
-        boundary = true;
+        boundary = false;
     }
 
     public void toggleBoundary(){

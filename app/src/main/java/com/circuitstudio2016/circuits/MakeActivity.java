@@ -29,6 +29,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private RelativeLayout layout;
     private int screenX;
     private ArrayList<UndoCommand> undos;
+    private ArrayList<Graph> graphs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         layout.addView(drawView);
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
         undos = new ArrayList<UndoCommand>();
+        graphs = new ArrayList<Graph>();
     }
 
     public void testPath(View w){
@@ -148,7 +150,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         try {
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(graph);
+            graphs.add(graph);
+            System.out.println("added graph to list" + graphs);
+            oos.writeObject(graphs);
             oos.close();
             fos.close();
             System.out.println("saved");
@@ -162,7 +166,8 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         try {
             FileInputStream fis = this.openFileInput("graphsaves");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            graph = (Graph) ois.readObject();
+            graphs = (ArrayList<Graph>) ois.readObject();
+            graph = graphs.remove(graphs.size() - 2);
             drawView.setGraph(graph);
             drawView.invalidate();
             ois.close();
@@ -170,6 +175,11 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void better_load(View w) {
+        Intent intent = new Intent(this, LoadActivity.class);
+        startActivity(intent);
     }
 
     public void undo(View v) {

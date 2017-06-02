@@ -13,7 +13,7 @@ public class PlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
     }
 
-    protected void hCircuits(View w){
+    public void hCircuits(View w){
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putParcelable("graph", Graph.makeSimpleGraph());
@@ -23,7 +23,7 @@ public class PlayActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    protected void hPaths(View w){
+    public void hPaths(View w){
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putParcelable("graph", Graph.makeSimpleGraph());
