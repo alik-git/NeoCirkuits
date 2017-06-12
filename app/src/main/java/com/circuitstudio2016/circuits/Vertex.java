@@ -123,9 +123,8 @@ public class Vertex implements Parcelable, Serializable{
 
     public String toString(){
         String s = "";
-        s+= "x: " + x;
-        s+= "y: " + y;
-        s+= "connections: " + connections.size();
+        s+= "(" + x + ", ";
+        s+= y + ")";
         return s;
     }
 }

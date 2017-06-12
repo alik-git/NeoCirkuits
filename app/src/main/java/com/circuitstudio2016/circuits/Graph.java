@@ -34,7 +34,9 @@ public class Graph implements Parcelable, Serializable{
 
         for(int v = 0; v < allConnections.size(); v++){
             for(int c: allConnections.get(v)){
-                vertices.get(v).connect(vertices.get(c));
+                if (! (vertices.get(v).isConnected(vertices.get(c))) ) {
+                    vertices.get(v).connect(vertices.get(c));
+                }
             }
         }
     }
@@ -44,7 +46,9 @@ public class Graph implements Parcelable, Serializable{
         ArrayList<ArrayList<Integer>> allConnections = in.readArrayList(ArrayList.class.getClassLoader());
         for(int v = 0; v < allConnections.size(); v++){
             for(int c: allConnections.get(v)){
-                vertices.get(v).connect(vertices.get(c));
+                if (! (vertices.get(v).isConnected(vertices.get(c))) ) {
+                    vertices.get(v).connect(vertices.get(c));
+                }
             }
         }
     }
@@ -116,10 +120,34 @@ public class Graph implements Parcelable, Serializable{
     public String toString(){
         String s = "Graph(";
         s += Integer.toString(vertices.size());
-        s += "): ";
+        s += "): [";
+
         for(Vertex v: vertices){
             s += v.toString();
+            s += ", ";
+        } s += "]\n";
+
+        s += "-Connections(";
+
+        ArrayList<UnorderedPair<Vertex>> connections = new ArrayList<UnorderedPair<Vertex>>();
+        for (Vertex v: vertices) {
+            for (Vertex c: v.getConnections()) {
+                if (v.isConnected(c)) {
+                    UnorderedPair<Vertex> pair = new UnorderedPair<Vertex>(v, c);
+                    if(!pair.inside(connections)) {
+                        connections.add(pair);
+                    }
+                }
+            }
         }
+        s += connections.size() + "): ";
+
+        for (UnorderedPair<Vertex> pair: connections) {
+            s += "[" + pair.getFirst().toString() + "+";
+            s += pair.getSecond().toString() + "], ";
+        }
+        s+= "\nend of Connections\n";
+
         return s;
     }
 
