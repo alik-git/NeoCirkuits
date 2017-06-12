@@ -7,6 +7,10 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import java.io.BufferedReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Graph implements Parcelable, Serializable{
     private ArrayList<Vertex> vertices;
 
@@ -52,6 +56,7 @@ public class Graph implements Parcelable, Serializable{
             }
         }
     }
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -120,14 +125,14 @@ public class Graph implements Parcelable, Serializable{
     public String toString(){
         String s = "Graph(";
         s += Integer.toString(vertices.size());
-        s += "): [";
+        s += "):\n";
 
         for(Vertex v: vertices){
             s += v.toString();
-            s += ", ";
-        } s += "]\n";
+            s += "\n";
+        } s += "vdone\n";
 
-        s += "-Connections(";
+        s += "Edges(";
 
         ArrayList<UnorderedPair<Vertex>> connections = new ArrayList<UnorderedPair<Vertex>>();
         for (Vertex v: vertices) {
@@ -140,13 +145,18 @@ public class Graph implements Parcelable, Serializable{
                 }
             }
         }
-        s += connections.size() + "): ";
+        s += connections.size() + "):\n";
 
-        for (UnorderedPair<Vertex> pair: connections) {
-            s += "[" + pair.getFirst().toString() + "+";
-            s += pair.getSecond().toString() + "], ";
+//        for (UnorderedPair<Vertex> pair: connections) {
+//            s += "[" + pair.getFirst().toString() + "-";
+//            s += pair.getSecond().toString() + "], ";
+//        }
+
+        for (int i =0; i < connections.size(); i++) {
+            s += "(" + vertices.indexOf(connections.get(i).getFirst()) + "to";
+            s += vertices.indexOf(connections.get(i).getSecond()) + ")\n";
         }
-        s+= "\nend of Connections\n";
+        s+= "edone\n";
 
         return s;
     }

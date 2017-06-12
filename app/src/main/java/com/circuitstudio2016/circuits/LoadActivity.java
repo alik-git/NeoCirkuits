@@ -38,38 +38,38 @@ public class LoadActivity extends AppCompatActivity {
     }
 
     public void graph1(View w) {
-        load(1);
+        load(0);
     }
 
     public void graph2(View w) {
-        load(2);
+        load(1);
     }
 
     public void graph3(View w) {
-        load(3);
+        load(2);
     }
 
     public void graph4(View w) {
-        load(4);
+        load(3);
     }
 
     public void graph5(View w) {
-        load(5);
+        load(4);
     }
 
     public void graph6(View w) {
-        load(6);
+        load(5);
     }
 
     public void graph7(View w) {
-        load(7);
+        load(6);
     }
 
     public void graph8(View w) {
-        load(8);
+        load(7);
     }
 
     public void graph9(View w) {
-        load(9);
+        load(8);
     }
 }

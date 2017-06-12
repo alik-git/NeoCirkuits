@@ -14,12 +14,15 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     public void hCircuits(View w){
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("graph", Graph.makeSimpleGraph());
-        intent.putExtras(bundle);
-        intent.setClass(this, HamiltonActivity.class);
-        intent.setAction("circuit");
+//        Intent intent = new Intent();
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable("graph", Graph.makeSimpleGraph());
+//        intent.putExtras(bundle);
+//        intent.setClass(this, HamiltonActivity.class);
+//        intent.setAction("circuit");
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, HCircuitLevelsActivity.class);
         startActivity(intent);
     }
 

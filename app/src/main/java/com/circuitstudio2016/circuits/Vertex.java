@@ -1,5 +1,6 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class Vertex implements Parcelable, Serializable{
     private int x;
     private int y;
-    private int radius;
+    private int radius = (Resources.getSystem().getDisplayMetrics().widthPixels)/24;
     private int color;
     private boolean isActivated;
     private ArrayList<Vertex> connections;
@@ -20,9 +21,33 @@ public class Vertex implements Parcelable, Serializable{
 
     public Vertex(int x, int y, int radius){
         //this snaps the vertices to the grid-lines
-        this.x = (90*(Math.round(x/90))+90);
-        this.y = (90*(Math.round(y/90))+45);
+        if (x%90 == 0) {
+            this.x = x;
+        } else {
+            this.x = (90*(Math.round(x/90))+90);
+        }
+        if ((y - 45)%90 == 0) {
+            this.y = y;
+        } else {
+            this.y = (90*(Math.round(y/90))+45);
+        }
         this.radius = radius;
+        this.color = Color.RED;
+        connections = new ArrayList<Vertex>();
+    }
+
+    public Vertex(int x, int y){
+        //this snaps the vertices to the grid-lines
+        if (x%90 == 0) {
+            this.x = x;
+        } else {
+            this.x = (90*(Math.round(x/90))+90);
+        }
+        if ((y - 45)%90 == 0) {
+            this.y = y;
+        } else {
+            this.y = (90*(Math.round(y/90))+45);
+        }
         this.color = Color.RED;
         connections = new ArrayList<Vertex>();
     }

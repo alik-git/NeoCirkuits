@@ -43,7 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoadActivity"></activity>
+        <activity android:name=".LoadActivity" />
+        <activity android:name=".HCircuitLevelsActivity"></activity>
     </application>
 
 </manifest>
