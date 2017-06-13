@@ -32,7 +32,7 @@ public class Vertex implements Parcelable, Serializable{
             this.y = (90*(Math.round(y/90))+45);
         }
         this.radius = radius;
-        this.color = Color.RED;
+        this.color = Color.parseColor("#40ff70");
         connections = new ArrayList<Vertex>();
     }
 
@@ -48,7 +48,7 @@ public class Vertex implements Parcelable, Serializable{
         } else {
             this.y = (90*(Math.round(y/90))+45);
         }
-        this.color = Color.RED;
+        this.color = Color.parseColor("#40ff70");
         connections = new ArrayList<Vertex>();
     }
 

@@ -43,24 +43,24 @@ public class MakeDrawView extends View {
         Integer[] strokeY = {1,3,5,7,8,10,12,14};
 
         //vertical lines
-        for (int x = 0; x < screenX; x += screenX/12) {
+        for (int x = 0; x < screenX ; x += screenX/12) {
             paint.setStrokeWidth(1);
             paint.setColor(Color.argb(200,0,191,250));
             int x2 = x/90;
             //make some lines bold for help
             if (Arrays.asList(strokeX).contains(x2)) { paint.setStrokeWidth(3);}
-            canvas.drawLine(x+45, 90, x+45, 1350, paint);
+            canvas.drawLine(x+45, 0, x+45, screenY, paint);
             //System.out.println((x+45) + "   " + x/90);
         }
 
         //horizontal lines
-        for (int y = 0; y <= screenY -360; y += screenX/12) {
+        for (int y = 0; y <= screenY; y += screenX/12) {
             paint.setStrokeWidth(1);
             paint.setColor(Color.argb(200,0,191,250));
             int y2 = y/90;
             //make some lines bold for help
             if (Arrays.asList(strokeY).contains(y2)) { paint.setStrokeWidth(3);}
-            canvas.drawLine(45, y, 1035, y, paint);
+            canvas.drawLine(0, y, screenX, y, paint);
         }
 
 
@@ -68,7 +68,7 @@ public class MakeDrawView extends View {
         for(Vertex v: graph.getVertices()) {
             for (Vertex vc : v.getConnections()) {
                 paint.setStrokeWidth(10);
-                paint.setColor(Color.RED);
+                paint.setColor(Color.parseColor("#40ff70"));
                 canvas.drawLine(v.getX(), v.getY(), vc.getX(), vc.getY(), paint);
             }
         }
@@ -77,12 +77,13 @@ public class MakeDrawView extends View {
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(v.getColor());
             canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
-//            paint.setStyle(Paint.Style.STROKE);
+
 //            paint.setColor(Color.BLACK);
 //            paint.setStrokeWidth(4);
-            canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
+//            canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
             if(boundary) {
-                paint.setColor(Color.RED);
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setColor(Color.parseColor("#40ff70"));
                 paint.setStrokeWidth(1);
                 canvas.drawCircle(v.getX(), v.getY(), v.getRadius()*2, paint);
             }

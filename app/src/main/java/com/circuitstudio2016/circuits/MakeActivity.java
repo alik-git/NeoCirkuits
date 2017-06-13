@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private Graph graph;
     private MakeDrawView drawView;
     private Vertex prev;
-    private RelativeLayout layout;
+    private ConstraintLayout layout;
     private int screenX;
     private ArrayList<UndoCommand> undos;
     private GraphList graphs;
@@ -38,9 +39,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make);
         graph = new Graph();
-        layout = (RelativeLayout) findViewById(R.id.activity_make);
+        layout = (ConstraintLayout) findViewById(R.id.activity_make_const2);
         drawView = new MakeDrawView(this, graph);
-        drawView.setBackgroundColor(Color.WHITE);
+        drawView.setBackgroundColor(Color.BLACK);
         drawView.setOnTouchListener(this);
         layout.addView(drawView);
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
@@ -84,17 +85,17 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         return (int) Math.sqrt(distX * distX + distY * distY);
     }
 
-    public boolean nearAnyVertex(float x, float y){
+    public boolean nearAnyVertex(float x, float y, int factor){
         for(Vertex v: graph.getVertices()) {
-            if(nearVertex(x, y, v)){
+            if(nearVertex(x, y, v, factor)){
                 return true;
             }
         }
         return false;
     }
 
-    public boolean nearVertex(float x, float y, Vertex v){
-        if(distance(x, y, v) <= screenX/12){
+    public boolean nearVertex(float x, float y, Vertex v, int factor){
+        if(distance(x, y, v) <= screenX/factor){
             return true;
         }
         return false;
@@ -116,21 +117,21 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if(!nearAnyVertex(e.getX(), e.getY())){
+                if(!nearAnyVertex(e.getX(), e.getY(), 6)){
                     Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
                     graph.addVertex(vrtx);
                     undos.add(new UndoVertex(vrtx, graph));
                     prev = vrtx;
                 }
                 for(Vertex vrtx: graph.getVertices()){
-                    if(nearVertex(e.getX(), e.getY(), vrtx)){
+                    if(nearVertex(e.getX(), e.getY(), vrtx, 6)){
                         prev = vrtx;
                     }
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
                 for(Vertex vrtx: graph.getVertices()) {
-                    if (nearVertex(e.getX(), e.getY(), vrtx) && prev != null && vrtx != prev) {
+                    if (nearVertex(e.getX(), e.getY(), vrtx, 12) && prev != null && vrtx != prev) {
                         if(!vrtx.isConnected(prev)) {
                             vrtx.connect(prev);
                             undos.add(new UndoConnection(vrtx, prev));

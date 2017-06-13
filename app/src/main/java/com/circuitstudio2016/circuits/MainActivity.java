@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exit(View w){
-        Toast t1 = Toast.makeText(getApplicationContext(), "Exit game here!", Toast.LENGTH_LONG);
-        t1.show();
+        finish();
+        System.exit(0);
     }
 }

@@ -1,92 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/activity_make">
 
-    <Button
-        android:text="CIRCUIT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/test_circuit"
-        android:onClick="testCircuit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_make_const">
 
-    <Button
-        android:text="PATH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/test_circuit"
-        android:layout_toRightOf="@+id/test_circuit"
-        android:layout_toEndOf="@+id/test_circuit"
-        android:id="@+id/test_path"
-        android:onClick="testPath" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/activity_make_const2"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            tools:layout_editor_absoluteY="11dp"
+            tools:layout_editor_absoluteX="32dp">
 
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/boundary_button"
-        android:onClick="toggleBoundary"
-        android:textOn="Boundary On"
-        android:textOff="Boundary Off"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:checked="false" />
+        </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:text="UNDO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:id="@+id/undo_button"
-        android:onClick="undo" />
+        <Button
+            android:id="@+id/button29"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:onClick="clear"
+            android:text="@string/clear"
+            android:textSize="24sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button26" />
 
-    <Button
-        android:text="SAVE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/test_path"
-        android:layout_toStartOf="@+id/test_path"
-        android:id="@+id/save_button"
-        android:onClick="save" />
+        <Button
+            android:id="@+id/button28"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:onClick="testPath"
+            android:text="@string/test_path"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/button27" />
 
-    <Button
-        android:text="LOAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/load_button"
-        android:onClick="load"
-        android:layout_below="@+id/undo_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/button27"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="8dp"
+            android:onClick="testCircuit"
+            android:text="@string/test_circuit"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="8dp" />
 
-    <Button
-        android:id="@+id/better_load_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/load_button"
-        android:layout_alignRight="@+id/load_button"
-        android:layout_below="@+id/load_button"
-        android:layout_marginTop="11dp"
-        android:text="B Load"
-        android:onClick="better_load"
-        android:textStyle="italic" />
+        <Button
+            android:id="@+id/button26"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:onClick="undo"
+            android:text="@string/undo"
+            android:textSize="24sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/undo_button"
-        android:layout_marginTop="14dp"
-        android:onClick="clear"
-        android:text="Clear" />
+        <Button
+            android:id="@+id/button24"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="better_load"
+            android:text="@string/load"
+            android:textSize="24sp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/button23"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
+        <Button
+            android:id="@+id/button23"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:onClick="save"
+            android:text="@string/save"
+            android:textSize="24sp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="0dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="8dp"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:onClick="toggleBoundary"
+            android:text="@string/boundary"
+            android:textColor="@color/neon_green"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="8dp" />
+    </android.support.constraint.ConstraintLayout>
 </RelativeLayout>
