@@ -28,7 +28,7 @@ public class LoadActivity extends AppCompatActivity {
             System.out.println(num);
             bundle.putParcelable("graph", graphs.getGraph(num));
             intent.putExtras(bundle);
-            String message = "Graph " + Integer.toString(num) + ": ";
+            String message = "Graph " + (Integer.toString(num + 1));
             intent.putExtra("message", message);
             intent.setClass(this, HamiltonTestActivity.class);
             intent.setAction("circuit");

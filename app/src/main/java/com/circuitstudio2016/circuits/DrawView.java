@@ -11,6 +11,8 @@ public class DrawView extends View {
     HamiltonPath path;
     float mouseX;
     float mouseY;
+    int blue = getResources().getColor(R.color.neon_blue);
+    int green = getResources().getColor(R.color.neon_green);
 
     public DrawView(Context context, HamiltonPath path) {
         super(context);
@@ -28,7 +30,7 @@ public class DrawView extends View {
         // draw to current "mouse" location
         if(path.getActivated().size() >= 1 && path.getActivated().size() <= path.getGraph().getVertices().size()){
             paint.setStrokeWidth(10);
-            paint.setColor(Color.GREEN);
+            paint.setColor(blue);
             Vertex v = path.getActivated().get(path.getActivated().size()-1);
             canvas.drawLine(v.getX(), v.getY(), mouseX, mouseY, paint);
         }
@@ -36,8 +38,8 @@ public class DrawView extends View {
 
         for(Vertex v: path.getGraph().getVertices()) {
             for (Vertex vc : v.getConnections()) {
-                paint.setStrokeWidth(2);
-                paint.setColor(Color.BLACK);
+                paint.setStrokeWidth(10);
+                paint.setColor(green);
                 canvas.drawLine(v.getX(), v.getY(), vc.getX(), vc.getY(), paint);
             }
         }
@@ -46,20 +48,18 @@ public class DrawView extends View {
             Vertex v1 = path.getActivated().get(i);
             Vertex v2 = path.getActivated().get(i+1);
             paint.setStrokeWidth(10);
-            paint.setColor(Color.GREEN);
+            paint.setColor(blue);
             canvas.drawLine(v1.getX(), v1.getY(), v2.getX(), v2.getY(), paint);
         }
         // draw all vertices
         if(!path.getActivated().isEmpty()) {
-            path.getActivated().get(0).setColor(Color.BLUE);
+            path.getActivated().get(0).setColor(blue);
         }
         for(Vertex v: path.getGraph().getVertices()) {
             paint.setStyle(Paint.Style.FILL);
-            paint.setColor(v.getColor());
-            canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setColor(Color.BLACK);
-            paint.setStrokeWidth(4);
+            if (v.isActivated()) {
+                paint.setColor(blue);
+            } else { paint.setColor(green); }
             canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
         }
     }

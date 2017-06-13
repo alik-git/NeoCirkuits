@@ -40,7 +40,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         layout = (RelativeLayout) findViewById(R.id.activity_hcircuits);
 
         drawView = new DrawView(this, path);
-        drawView.setBackgroundColor(Color.WHITE);
+        drawView.setBackgroundColor(Color.BLACK);
         drawView.setOnTouchListener(this);
         layout.addView(drawView);
 

@@ -19,25 +19,26 @@ public class HamiltonTestActivity extends HamiltonActivity {
         }
 
         //make button
-        Button endButton = new Button(this);
-        endButton.setText("Go Back");
-        endButton.setX(0);
-        endButton.setY(0);
-        endButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        Button endButton = new Button(this);
+//        endButton.setText("Go Back");
+//        endButton.setX(0);
+//        endButton.setY(0);
+//        endButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
-        getLayout().addView(endButton, lp);
+//        getLayout().addView(endButton, lp);
 
         //make message
         TextView messageView = new TextView(this);
         messageView.setTextSize(25);
         messageView.setText(message);
-        messageView.setX(screenX/2);
+        messageView.setX(32);
         messageView.setY(50);
+        messageView.setTextColor(getResources().getColor(R.color.neon_green));
         getLayout().addView(messageView, lp);
     }
 

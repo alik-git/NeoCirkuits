@@ -60,7 +60,7 @@ public class HCircuitLevelsActivity extends AppCompatActivity {
             System.out.println(num);
             bundle.putParcelable("graph", this.graphs.getGraph(num));
             intent.putExtras(bundle);
-            String message = "Graph " + Integer.toString(num) + ": ";
+            String message = "Level " + (Integer.toString(num + 1));
             intent.putExtra("message", message);
             intent.setClass(this, HamiltonTestActivity.class);
             intent.setAction("circuit");
