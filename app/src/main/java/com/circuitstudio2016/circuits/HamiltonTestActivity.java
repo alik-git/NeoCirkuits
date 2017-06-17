@@ -46,7 +46,7 @@ public class HamiltonTestActivity extends HamiltonActivity {
         if(getPath().isFinished()){
             Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
             t1.show();
-            getPath().reset();
+            //getPath().reset();
         }
     }
 }

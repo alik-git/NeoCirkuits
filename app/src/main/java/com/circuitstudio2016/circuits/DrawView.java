@@ -27,20 +27,26 @@ public class DrawView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
+        // step vertices
+        for ( Vertex v: path.getGraph().getVertices()) {
+            v.step();
+        }
+
         // draw to current "mouse" location
         if(path.getActivated().size() >= 1 && path.getActivated().size() <= path.getGraph().getVertices().size()){
             paint.setStrokeWidth(10);
             paint.setColor(blue);
             Vertex v = path.getActivated().get(path.getActivated().size()-1);
-            canvas.drawLine(v.getX(), v.getY(), mouseX, mouseY, paint);
+            canvas.drawLine(v.getXx(), v.getYy(), mouseX, mouseY, paint);
         }
         // draw all connection
 
         for(Vertex v: path.getGraph().getVertices()) {
             for (Vertex vc : v.getConnections()) {
+
                 paint.setStrokeWidth(10);
                 paint.setColor(green);
-                canvas.drawLine(v.getX(), v.getY(), vc.getX(), vc.getY(), paint);
+                canvas.drawLine(v.getXx(), v.getYy(), vc.getXx(), vc.getYy(), paint);
             }
         }
         // draw all activated links
@@ -49,7 +55,7 @@ public class DrawView extends View {
             Vertex v2 = path.getActivated().get(i+1);
             paint.setStrokeWidth(10);
             paint.setColor(blue);
-            canvas.drawLine(v1.getX(), v1.getY(), v2.getX(), v2.getY(), paint);
+            canvas.drawLine(v1.getXx(), v1.getYy(), v2.getXx(), v2.getYy(), paint);
         }
         // draw all vertices
         if(!path.getActivated().isEmpty()) {
@@ -60,7 +66,16 @@ public class DrawView extends View {
             if (v.isActivated()) {
                 paint.setColor(blue);
             } else { paint.setColor(green); }
-            canvas.drawCircle(v.getX(), v.getY(), v.getRadius(), paint);
+            canvas.drawCircle(v.getXx(), v.getYy(), v.getRadius(), paint);
         }
+
+        if(!path.getActivated().isEmpty()) {
+            Vertex first = path.getActivated().get(0);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(20);
+            paint.setColor(Color.BLACK);
+            canvas.drawCircle(first.getXx(), first.getYy(), first.getRadius()/2, paint);
+        }
+        invalidate();
     }
 }
