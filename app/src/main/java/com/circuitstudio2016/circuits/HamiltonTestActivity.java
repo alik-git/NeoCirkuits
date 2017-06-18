@@ -1,8 +1,9 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.preference.PreferenceManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,13 +11,19 @@ import android.widget.Toast;
 public class HamiltonTestActivity extends HamiltonActivity {
     private String message;
 
+    private int currentNum;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         message = "";
         if (this.getIntent().hasExtra("message")) {
             message = this.getIntent().getStringExtra("message");
+            currentNum =  Character.getNumericValue(message.charAt(message.length()- 1));
         }
+//        System.out.println("CURRENT NUM IS: " + currentNum + " AND THE OTHER ONE " +
+//                "IS: " + clevel + "\n");
+//        System.out.println(prefs.getInt(getResources().getString(R.string.current_level), 60000));
 
         //make button
 //        Button endButton = new Button(this);
@@ -41,6 +48,11 @@ public class HamiltonTestActivity extends HamiltonActivity {
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
         getLayout().addView(messageView, lp);
     }
+
+    public int getCurrentNum() {
+        return currentNum;
+    }
+
 
     public void checkWon(){
         if(getPath().isFinished()){

@@ -17,4 +17,6 @@
     <string name="test_circuit">Circuit</string>
     <string name="test_path">Path</string>
     <string name="boundary">Boundary</string>
+    <string name="current_level">com.circuitstudio2016.circuits.CUR_LEVEL</string>
+    <string name="next_level_start">Next Level</string>
 </resources>
