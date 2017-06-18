@@ -8,7 +8,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Neon">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoadActivity" />
-        <activity android:name=".HCircuitLevelsActivity"></activity>
+        <activity android:name=".HCircuitLevelsActivity" />
     </application>
 
 </manifest>
