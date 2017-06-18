@@ -63,6 +63,25 @@ public class HCircuitLevelsActivity extends AppCompatActivity {
             "I: (4to5)\n" +
             "I: edone\n");
 
+    private Graph g4 = this.parser.parse("I: #0 Graph(6):\n" +
+            "I: (270, 1035)\n" +
+            "I: (540, 1395)\n" +
+            "I: (900, 1035)\n" +
+            "I: (810, 495)\n" +
+            "I: (270, 585)\n" +
+            "I: (720, 855)\n" +
+            "I: vdone\n" +
+            "I: Edges(8):\n" +
+            "I: (0to2)\n" +
+            "I: (0to3)\n" +
+            "I: (0to5)\n" +
+            "I: (1to2)\n" +
+            "I: (1to4)\n" +
+            "I: (1to5)\n" +
+            "I: (2to3)\n" +
+            "I: (3to4)\n" +
+            "I: edone");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +90,7 @@ public class HCircuitLevelsActivity extends AppCompatActivity {
         this.graphs.addGraph(g1);
         this.graphs.addGraph(g2);
         this.graphs.addGraph(g3);
+        this.graphs.addGraph(g4);
         System.out.println("load func: " + this.graphs);
 
         if (this.getIntent().hasExtra("rush")) {
