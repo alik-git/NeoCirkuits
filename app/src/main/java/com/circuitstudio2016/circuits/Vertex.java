@@ -16,6 +16,7 @@ public class Vertex implements Parcelable, Serializable{
     int newx =0;
     int newy =0;
     int stepNum = 0;
+    int eNum = 0;
 
 
 
@@ -25,6 +26,7 @@ public class Vertex implements Parcelable, Serializable{
     private int color;
     private boolean isActivated;
     private ArrayList<Vertex> connections;
+    private ArrayList<Vertex> econnections = new ArrayList<Vertex>();
 
 
 
@@ -148,16 +150,77 @@ public class Vertex implements Parcelable, Serializable{
     public void setColor(int c) { this.color = c; }
 
     public void setActivated(Boolean b){
-        this.isActivated = b;
+        if (b) {
+            eNum++;
+        } else { eNum--; }
+
+        if (eNum > 0) {
+            this.isActivated = true;
+        } else {
+            this.isActivated = false;
+        }
         if (b) {this.color = Color.GREEN;}
         else   {this.color = Color.RED;}
     }
 
-    private void addConnection(Vertex other){
-        connections.add(other);
+    public void setUActivated(Boolean b){
+
+            this.isActivated = b;
+            this.eNum = 0;
+            for (Vertex v: this.connections) {
+                if (!this.isEConnected(v)) {
+                    this.Econnect(v);
+                }
+
+            }
     }
 
-    private void removeConnection(Vertex other) { connections.remove(other); }
+    public void setEActivated(Boolean b){
+        if (b) {
+            eNum++;
+        } else { eNum--; }
+
+        if (eNum > 0) {
+            this.isActivated = true;
+        } else {
+            this.isActivated = false;
+        }
+
+        //this.isActivated = b;
+        if (b) {this.color = Color.GREEN;}
+        else   {this.color = Color.RED;}
+    }
+
+
+    private void addConnection(Vertex other){
+        connections.add(other);
+        econnections.add(other);
+    }
+
+    private void removeConnection(Vertex other) {
+        connections.remove(other);
+        econnections.remove(other);
+    }
+
+    private void addEConnection(Vertex other){
+        econnections.add(other);
+    }
+
+    private void removeEConnection(Vertex other) {
+        econnections.remove(other);
+    }
+
+    public void Econnect(Vertex other){
+        addEConnection(other);
+        other.addEConnection(this);
+    }
+
+    public void disEconnect(Vertex other){
+        if(isConnected(other)){
+            removeEConnection(other);
+            other.removeEConnection(this);
+        }
+    }
 
     public void connect(Vertex other){
         addConnection(other);
@@ -221,6 +284,15 @@ public class Vertex implements Parcelable, Serializable{
 
     public boolean isConnected(Vertex other){
         for(Vertex v: connections){
+            if(v == other){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isEConnected(Vertex other){
+        for(Vertex v: econnections){
             if(v == other){
                 return true;
             }

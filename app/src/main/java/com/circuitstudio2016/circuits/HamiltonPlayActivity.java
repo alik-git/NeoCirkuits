@@ -35,7 +35,7 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
 
     @Override
     public void checkWon(){
-        if(getPath().isFinished()){
+        if(getPath().isDone()){
             Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
             t1.show();
             //getPath().reset();

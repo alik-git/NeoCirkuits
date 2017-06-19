@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public final class UnorderedPair<T> {
     private final T first;
     private final T second;
+    private boolean activated = false;
+
 
     public UnorderedPair(T first, T second) {
         this.first = first;
@@ -38,6 +40,24 @@ public final class UnorderedPair<T> {
 
     public T getSecond() {
         return second;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
+    }
+
+    public boolean isConnected(UnorderedPair<Vertex> other) {
+        if (first == other.first || first == other.second) {
+            return true;
+        }
+        if (second == other.first || second == other.second) {
+            return true;
+        }
+        return false;
     }
 
     public boolean inside(ArrayList<UnorderedPair<T>> list) {

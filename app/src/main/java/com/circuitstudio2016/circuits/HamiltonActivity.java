@@ -12,6 +12,9 @@ import android.widget.RelativeLayout;
 
 public class HamiltonActivity extends AppCompatActivity implements View.OnTouchListener {
     private HamiltonPath path;
+
+
+
     private DrawView drawView;
     private RelativeLayout layout;
     int screenX, screenY;
@@ -29,8 +32,10 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         else{
             init( new HamiltonPath(graph));
         }
+    }
 
-
+    public DrawView getDrawView() {
+        return drawView;
     }
 
     public void init(HamiltonPath path){
@@ -78,6 +83,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         for(Vertex vrtx: path.getGraph().getVertices()){
             if(nearVertex(x,y, vrtx)){
                 path.tryActivate(vrtx);
+                System.out.println("yopoooooooooooooooooooooooooooo");
                 checkWon();
             }
         }
@@ -85,7 +91,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
 
     @Override
     public boolean onTouch(View v, MotionEvent e) {
-        if(!path.isFinished()) {
+        if(!path.isDone()) {
             switch (e.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     drawView.setMouseLocation(e.getX(), e.getY());

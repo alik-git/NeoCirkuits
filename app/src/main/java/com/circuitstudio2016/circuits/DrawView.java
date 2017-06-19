@@ -20,6 +20,13 @@ public class DrawView extends View {
         this.path = path;
     }
 
+    public DrawView(Context context) {
+        super(context);
+        paint.setColor(Color.BLACK);
+    }
+
+
+
     public void setMouseLocation(float x, float y){
         mouseX = x;
         mouseY = y;
@@ -28,12 +35,13 @@ public class DrawView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         // step vertices
+
         for ( Vertex v: path.getGraph().getVertices()) {
             v.step();
         }
 
         // draw to current "mouse" location
-        if(path.getActivated().size() >= 1 && path.getActivated().size() <= path.getGraph().getVertices().size()){
+        if(path.getActivated().size() >= 1 && (!path.isDone() || !path.isEulerFinished())){
             paint.setStrokeWidth(10);
             paint.setColor(blue);
             Vertex v = path.getActivated().get(path.getActivated().size()-1);

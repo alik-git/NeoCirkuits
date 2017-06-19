@@ -65,7 +65,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             Bundle bundle = new Bundle();
             bundle.putParcelable("graph", graph);
             intent.putExtras(bundle);
-            intent.setClass(this, HamiltonTestActivity.class);
+            if (type == "circuit") {
+                intent.setClass(this, HamiltonTestActivity.class);
+            } else { intent.setClass(this, EulerActivity.class); }
             intent.setAction(type);
             startActivity(intent);
         //}

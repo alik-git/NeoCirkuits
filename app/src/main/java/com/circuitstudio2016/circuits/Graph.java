@@ -122,6 +122,22 @@ public class Graph implements Parcelable, Serializable{
         return graph;
     }
 
+    public ArrayList<UnorderedPair<Vertex>> getEdges() {
+
+        ArrayList<UnorderedPair<Vertex>> connections = new ArrayList<UnorderedPair<Vertex>>();
+        for (Vertex v: vertices) {
+            for (Vertex c: v.getConnections()) {
+                if (v.isConnected(c)) {
+                    UnorderedPair<Vertex> pair = new UnorderedPair<Vertex>(v, c);
+                    if(!pair.inside(connections)) {
+                        connections.add(pair);
+                    }
+                }
+            }
+        }
+        return connections;
+    }
+
     public String toString(){
         String s = "Graph(";
         s += Integer.toString(vertices.size());

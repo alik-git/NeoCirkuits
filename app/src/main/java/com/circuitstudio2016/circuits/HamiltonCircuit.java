@@ -12,19 +12,12 @@ public class HamiltonCircuit extends HamiltonPath{
         getActivated().add(v);
     }
 
-    public void tryActivate(Vertex v){
-        if(super.isFinished() && v == getActivated().get(0) && v.isConnected(getActivated().get(getActivated().size()-1))){
-            activate(v);
-        }
-        super.tryActivate(v);
-    }
-
+    @Override
     public boolean isFinished(){
-        if(!getActivated().isEmpty()){
-            return getActivated().size() == getGraph().getVertices().size() + 1
-                    && getActivated().get(0) == getActivated().get(getActivated().size()-1);
-        }
-        return false;
+        return (super.getActivated().size() == super.getGraph().getEdges().size() &&
+                super.getActivated().get(0) ==
+                        super.getActivated().get(super.getActivated().size() -1));
+
     }
 
 }

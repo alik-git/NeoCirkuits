@@ -98,6 +98,7 @@ public class HCircuitLevelsActivity extends AppCompatActivity {
             int toload = this.getIntent().getIntExtra("rush", 1);
             System.out.println("TRYING TO RUSH TO: " + toload);
             load(toload);
+            finish();
         }
     }
 

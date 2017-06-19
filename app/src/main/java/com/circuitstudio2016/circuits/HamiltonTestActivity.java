@@ -55,7 +55,8 @@ public class HamiltonTestActivity extends HamiltonActivity {
 
 
     public void checkWon(){
-        if(getPath().isFinished()){
+        System.out.println("yopoooooooooooooooooooooooooooo22222fgdsgsgf222222");
+        if(getPath().isDone()){
             Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
             t1.show();
             //getPath().reset();
