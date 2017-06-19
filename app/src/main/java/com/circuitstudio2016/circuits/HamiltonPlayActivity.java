@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -22,6 +23,15 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     public void checkWon(){
@@ -67,6 +77,7 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
                     intent.putExtra("rush", HamiltonPlayActivity.super.getCurrentNum());
                     intent.setClass(getApplicationContext(), HCircuitLevelsActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
             getLayout().addView(nextButton);

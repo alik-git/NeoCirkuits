@@ -30,7 +30,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private MakeDrawView drawView;
     private Vertex prev;
     private ConstraintLayout layout;
-    private int screenX;
+    private int screenX, screenY;
     private ArrayList<UndoCommand> undos;
     private GraphList graphs;
 
@@ -45,6 +45,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         drawView.setOnTouchListener(this);
         layout.addView(drawView);
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+        screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
         undos = new ArrayList<UndoCommand>();
         graphs = new GraphList();
     }
@@ -113,11 +114,20 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         return true;
     }
 
+    public boolean withinBounds(float x, float y) {
+        if (x >= (screenX/12) && x <= (screenX - (screenX/12)*2) ) {
+            if (y >= ((screenX/12)*4) && y <= (screenY - ((screenX/12)*5))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean onTouch(View v, MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if(!nearAnyVertex(e.getX(), e.getY(), 6)){
+                if(!nearAnyVertex(e.getX(), e.getY(), 6) && withinBounds(e.getX(), e.getY())){
                     Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
                     graph.addVertex(vrtx);
                     undos.add(new UndoVertex(vrtx, graph));
