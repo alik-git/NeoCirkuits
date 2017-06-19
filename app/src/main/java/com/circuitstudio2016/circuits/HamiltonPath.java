@@ -56,11 +56,16 @@ public class HamiltonPath {
     }
 
     public void tryActivate(Vertex v){
-        System.out.println("NUM EDGES/VERTS IS yopoooooooooooooooooooooooooooo");
+//        System.out.println("NUM EDGES/VERTS IS yopoooooooooooooooooooooooooooo");
         if(activated.isEmpty()){
             activate(v);
         }
-        else if( v == activated.get(0) && v.isConnected(activated.get(activated.size()-1)) ||
+        else if (v == activated.get(0) && v.isConnected(activated.get(activated.size()-1)) &&
+                (activated.size() == graph.getVertices().size())) {
+            activate(v);
+
+        }
+        else if(
                 (!v.isActivated() && v.isConnected(activated.get(activated.size()-1)))){
             activate(v);
         }
@@ -83,9 +88,9 @@ public class HamiltonPath {
     }
 
     public boolean isFinished(){
-        System.out.println("yopoooooooooooooooooooooooooooo222222222225555555555555555555555555555");
-        System.out.println("yopoooooooooooooooooooooooooooo" +
-                "000000000000000000000000000000000000000000000000000000000" + graph.getVertices().size());
+//        System.out.println("yopoooooooooooooooooooooooooooo222222222225555555555555555555555555555");
+//        System.out.println("yopoooooooooooooooooooooooooooo" +
+//                "000000000000000000000000000000000000000000000000000000000" + graph.getVertices().size());
         if (activated.size() == graph.getVertices().size()) {
             System.out.println("NUM EDGES/VERTS IS " + graph.getVertices().size());
             return true;
@@ -94,11 +99,11 @@ public class HamiltonPath {
     }
 
     public boolean isDone(){
-        System.out.println("yopoooooooooooooooooooooooooooo222222222225555555555555555555555555555");
-        System.out.println("yopoooooooooooooooooooooooooooo" +
-                "000000000000000000000000000000000000000000000000000000000" + graph.getVertices().size());
+//        System.out.println("yopoooooooooooooooooooooooooooo222222222225555555555555555555555555555");
+//        System.out.println("yopoooooooooooooooooooooooooooo" +
+//                "000000000000000000000000000000000000000000000000000000000" + graph.getVertices().size());
         if (activated.size() == graph.getVertices().size() + 1) {
-            System.out.println("NUM EDGES/VERTS IS " + graph.getVertices().size());
+            //System.out.println("NUM EDGES/VERTS IS " + graph.getVertices().size());
             return true;
         }
         return false;
@@ -107,7 +112,7 @@ public class HamiltonPath {
     public boolean isEulerFinished(){
 
         if (activated.size() == graph.getEdges().size() + 1) {
-            System.out.println("NUM EDGES IS " + graph.getEdges().size());
+            //System.out.println("NUM EDGES IS " + graph.getEdges().size());
             return true;
         }
         return false;

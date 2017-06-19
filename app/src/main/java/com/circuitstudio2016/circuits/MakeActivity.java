@@ -68,7 +68,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             if (type == "circuit") {
                 intent.setClass(this, HamiltonTestActivity.class);
             } else { intent.setClass(this, EulerActivity.class); }
-            intent.setAction(type);
+            //intent.setAction(type);
             startActivity(intent);
         //}
         /*else{

@@ -7,7 +7,7 @@
     <string name="settings">Settings</string>
     <string name="hcircuits">Hamilton\nCircuits</string>
     <string name="help">Help</string>
-    <string name="hpaths">Paths</string>
+    <string name="hpaths">Euler\nPaths</string>
     <string name="save">Save</string>
     <string name="load">Load</string>
     <string name="undo">Undo</string>
@@ -17,6 +17,7 @@
     <string name="test_circuit">Hamilton</string>
     <string name="test_path">Euler</string>
     <string name="boundary">Boundary</string>
-    <string name="current_level">com.circuitstudio2016.circuits.CUR_LEVEL</string>
+    <string name="current_hamilton_level">com.circuitstudio2016.circuits.CUR_HAMILTON_LEVEL</string>
     <string name="next_level_start">Next Level</string>
+    <string name="current_euler_level">com.circuitstudio2016.circuits.CUR_EULER_LEVEL</string>
 </resources>

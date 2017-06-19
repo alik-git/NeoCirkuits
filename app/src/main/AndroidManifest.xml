@@ -47,7 +47,9 @@
         <activity android:name=".HCircuitLevelsActivity" />
         <activity android:name=".HamiltonPlayActivity" />
         <activity android:name=".EulerActivity" />
-
+        <activity android:name=".EulerPlayActivity" />
+        <activity android:name=".LevelsActivity" />
+        <activity android:name=".ECircuitLevelsActivity" />
     </application>
 
 </manifest>

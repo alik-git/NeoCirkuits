@@ -23,16 +23,23 @@ public class PlayActivity extends AppCompatActivity {
 //        startActivity(intent);
 
         Intent intent = new Intent(this, HCircuitLevelsActivity.class);
+        intent.putExtra("level_string", getResources().getString(R.string.current_hamilton_level));
+        intent.putExtra("type", "hamilton");
         startActivity(intent);//lll
     }
 
     public void hPaths(View w){
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("graph", Graph.makeSimpleGraph());
-        intent.putExtras(bundle);
-        intent.setClass(this, HamiltonActivity.class);
-        intent.setAction("path");
+//        Intent intent = new Intent();
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable("graph", Graph.makeSimpleGraph());
+//        intent.putExtras(bundle);
+//        intent.setClass(this, HamiltonActivity.class);
+//        intent.setAction("path");
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, ECircuitLevelsActivity.class);
+        intent.putExtra("level_string", getResources().getString(R.string.current_euler_level));
+        intent.putExtra("type", "euler");
         startActivity(intent);
     }
 

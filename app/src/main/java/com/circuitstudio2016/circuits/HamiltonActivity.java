@@ -26,12 +26,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         setContentView(R.layout.activity_hcircuits);
 
         Graph graph = this.getIntent().getExtras().getParcelable("graph");
-        if(this.getIntent().getAction().equals("circuit")) {
-            init(new HamiltonCircuit(graph));
-        }
-        else{
-            init( new HamiltonPath(graph));
-        }
+        init(new HamiltonCircuit(graph));
     }
 
     public DrawView getDrawView() {
@@ -83,7 +78,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         for(Vertex vrtx: path.getGraph().getVertices()){
             if(nearVertex(x,y, vrtx)){
                 path.tryActivate(vrtx);
-                System.out.println("yopoooooooooooooooooooooooooooo");
+                //System.out.println("yopoooooooooooooooooooooooooooo");
                 checkWon();
             }
         }

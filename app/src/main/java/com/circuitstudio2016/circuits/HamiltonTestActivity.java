@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HamiltonTestActivity extends HamiltonActivity {
-    private String message;
 
+    private String message;
     private int currentNum;
 
     protected void onCreate(Bundle savedInstanceState) {
