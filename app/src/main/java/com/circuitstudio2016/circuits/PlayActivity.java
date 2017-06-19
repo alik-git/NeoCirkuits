@@ -23,7 +23,7 @@ public class PlayActivity extends AppCompatActivity {
 //        startActivity(intent);
 
         Intent intent = new Intent(this, HCircuitLevelsActivity.class);
-        startActivity(intent);
+        startActivity(intent);//lll
     }
 
     public void hPaths(View w){
