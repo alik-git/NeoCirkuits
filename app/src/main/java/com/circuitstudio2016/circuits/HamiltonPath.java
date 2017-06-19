@@ -28,6 +28,7 @@ public class HamiltonPath {
     private void activate(Vertex v){
         v.setActivated(true);
         activated.add(v);
+        //useless
     }
 
     private void removeLast(){
