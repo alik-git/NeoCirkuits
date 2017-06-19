@@ -39,6 +39,7 @@ public class HamiltonPath {
         v.setActivated(true);
         activated.add(v);
         v.disEconnect(other);
+        //lol
         //useless
     }
 
