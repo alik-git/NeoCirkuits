@@ -20,4 +20,6 @@
     <string name="current_hamilton_level">com.circuitstudio2016.circuits.CUR_HAMILTON_LEVEL</string>
     <string name="next_level_start">Next Level</string>
     <string name="current_euler_level">com.circuitstudio2016.circuits.CUR_EULER_LEVEL</string>
+    <string name="go_back">Back</string>
+    <string name="delete_graph">Delete</string>
 </resources>

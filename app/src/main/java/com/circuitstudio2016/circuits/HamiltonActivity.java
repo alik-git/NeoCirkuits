@@ -26,19 +26,16 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         setContentView(R.layout.activity_hcircuits);
 
         Graph graph = this.getIntent().getExtras().getParcelable("graph");
-        init(new HamiltonCircuit(graph));
+        init(new HamiltonCircuit(graph), (RelativeLayout) findViewById(R.id.activity_hcircuits));
     }
 
     public DrawView getDrawView() {
         return drawView;
     }
 
-    public void init(HamiltonPath path){
+    public void init(HamiltonPath path, RelativeLayout layout){
         this.path = path;
         drawView = new DrawView(this, path);
-
-        layout = (RelativeLayout) findViewById(R.id.activity_hcircuits);
-
         drawView = new DrawView(this, path);
         drawView.setBackgroundColor(Color.BLACK);
         drawView.setOnTouchListener(this);

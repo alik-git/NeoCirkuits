@@ -45,6 +45,8 @@ public class GraphList implements Parcelable, Serializable{
 
     public ArrayList<Graph> getGraphs() { return graphs; }
 
+    public Graph[] getGraphsArray() { return graphs.toArray(new Graph[graphs.size()]); }
+
     public Graph getGraph(int num) { return graphs.get(num); }
 
     public void addGraph(Graph g) {

@@ -51,11 +51,11 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void testPath(View w){
-        test("path");
+        test("Euler");
     }
 
     public void testCircuit(View w){
-        test("circuit");
+        test("Hamilton");
     }
 
     public void test(String type){
@@ -65,7 +65,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             Bundle bundle = new Bundle();
             bundle.putParcelable("graph", graph);
             intent.putExtras(bundle);
-            if (type == "circuit") {
+            if (type.equals("Hamilton")) {
                 intent.setClass(this, HamiltonTestActivity.class);
             } else { intent.setClass(this, EulerActivity.class); }
             //intent.setAction(type);
@@ -202,7 +202,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             Bundle bundle = new Bundle();
             bundle.putParcelable("graphs", graphs);
             intent.putExtras(bundle);
-            intent.setClass(this, LoadActivity.class);
+            intent.setClass(this, HamiltonLevelsActivity.class);
             startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();

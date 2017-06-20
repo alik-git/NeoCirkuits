@@ -50,6 +50,9 @@
         <activity android:name=".EulerPlayActivity" />
         <activity android:name=".LevelsActivity" />
         <activity android:name=".ECircuitLevelsActivity" />
+        <activity android:name=".GraphLoadActivity" />
+        <activity android:name=".SelectActivity" />
+        <activity android:name=".HamiltonLevelsActivity"></activity>
     </application>
 
 </manifest>
