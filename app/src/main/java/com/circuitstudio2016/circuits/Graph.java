@@ -18,7 +18,7 @@ public class Graph implements Parcelable, Serializable{
         vertices = new ArrayList<Vertex>();
     }
 
-    public Graph(Graph g) {
+    public Graph(Graph g) {//
         vertices = new ArrayList<Vertex>();
         for (Vertex v: g.vertices) {
             Vertex copy = new Vertex(v);
