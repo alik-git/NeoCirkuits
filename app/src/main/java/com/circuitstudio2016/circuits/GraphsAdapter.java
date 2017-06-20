@@ -48,9 +48,9 @@ public class GraphsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Button button = new Button(mContext);
         int graphNum = position + 1;
-        String text = type[0];
+        String text = type[0];//
         text+= "" + graphNum;
-        button.setText(text);
+        button.setText(text);//
         button.setTextSize(16);
         button.setBackgroundColor(Color.BLACK);//
         final int num = position;
