@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EulerTestActivity extends HamiltonActivity {
 
@@ -60,8 +61,9 @@ public class EulerTestActivity extends HamiltonActivity {
         }
     }
 
+    @Override
     public void checkWon(){
-//        if(super.getPath().isEulerFinished()){
+        if(super.getPath().isEulerFinished()){
 //            Button endButton = new Button(this);
 //            endButton.setText("Go Back");
 //            endButton.setX(screenX/3);
@@ -74,7 +76,9 @@ public class EulerTestActivity extends HamiltonActivity {
 //            });
 //            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(screenX/3, screenY/12);
 //            relativeLayout.addView(endButton, lp);
-//        }
+            Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
+            t1.show();
+        }
     }
 
     public void switchMode(View w) {
