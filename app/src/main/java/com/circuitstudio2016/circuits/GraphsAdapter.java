@@ -52,7 +52,7 @@ public class GraphsAdapter extends BaseAdapter {
         text+= "" + graphNum;
         button.setText(text);
         button.setTextSize(16);
-        button.setBackgroundColor(Color.BLACK);
+        button.setBackgroundColor(Color.BLACK);//
         final int num = position;
 
         button.setOnClickListener(new View.OnClickListener() {
