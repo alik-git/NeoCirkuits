@@ -45,6 +45,10 @@ public class GraphList implements Parcelable, Serializable{
 
     public ArrayList<Graph> getGraphs() { return graphs; }
 
+    public void setGraphs(ArrayList<Graph> graphs) {
+        this.graphs = graphs;
+    }
+
     public Graph[] getGraphsArray() { return graphs.toArray(new Graph[graphs.size()]); }
 
     public Graph getGraph(int num) { return graphs.get(num); }
@@ -54,7 +58,18 @@ public class GraphList implements Parcelable, Serializable{
         graphs.add(gcopy);
     }
 
-    public Graph removeGraph(int num) { return graphs.remove(num); }
+    public void removeGraph(Graph graph) {
+        for (int i = 0; i < graphs.size(); i++ ) {
+            if (graph.toString().equals(graphs.get(i).toString())) {
+                removeGraphNum(i);
+                System.out.println("adtually deleted 7256056171065617603724014063207342607632" +
+                        "570641076034103265107651405236017439024!!!!!!!!!!!!!!!!!!!!!!!!!");
+            }
+        }
+    }
+
+    public Graph removeGraphNum(int num) { return graphs.remove(num); }
+
 
     public int getSize() { return graphs.size(); }
 

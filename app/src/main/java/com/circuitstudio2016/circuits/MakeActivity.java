@@ -9,20 +9,13 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class MakeActivity extends AppCompatActivity implements View.OnTouchListener {
@@ -67,7 +60,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             intent.putExtras(bundle);
             if (type.equals("Hamilton")) {
                 intent.setClass(this, HamiltonTestActivity.class);
-            } else { intent.setClass(this, EulerActivity.class); }
+            } else { intent.setClass(this, EulerTestActivity.class); }
             //intent.setAction(type);
             startActivity(intent);
         //}
@@ -202,8 +195,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             Bundle bundle = new Bundle();
             bundle.putParcelable("graphs", graphs);
             intent.putExtras(bundle);
-            intent.setClass(this, HamiltonLevelsActivity.class);
+            intent.setClass(this, GraphLoadActivity.class);
             startActivity(intent);
+            //finish();
         } catch (Exception e) {
             e.printStackTrace();
         }

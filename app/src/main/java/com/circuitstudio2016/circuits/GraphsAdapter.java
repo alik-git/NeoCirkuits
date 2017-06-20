@@ -1,14 +1,13 @@
 package com.circuitstudio2016.circuits;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 
 /**
  * Created by aliqk on 6/19/2017.
@@ -16,11 +15,11 @@ import android.widget.TextView;
 
 public class GraphsAdapter extends BaseAdapter {
 
-    private final Context mContext;
+    private final Activity mContext;
     private final Graph[] graphs;
     private final String[] type;
 
-    public GraphsAdapter(Context context, Graph[] graphs, String[] type) {
+    public GraphsAdapter(Activity context, Graph[] graphs, String[] type) {
         this.mContext = context;
         this.graphs = graphs;
         this.type = type;
@@ -65,10 +64,11 @@ public class GraphsAdapter extends BaseAdapter {
                 String message = type[0] + (Integer.toString(num + 1));
                 intent.putExtra("message", message);
                 if (type[0].equals("Graph ")) {
+                    //type = mContext.getType();
                     if (type[1].equals("Hamilton")) {
                         intent.setClass(mContext, HamiltonTestActivity.class);
                     } else {
-                        intent.setClass(mContext, EulerActivity.class);
+                        intent.setClass(mContext, EulerTestActivity.class);
                     }
                 } else {
                     if (type[1].equals("Hamilton")) {
@@ -79,6 +79,7 @@ public class GraphsAdapter extends BaseAdapter {
                 }
                 intent.setAction("circuit");
                 mContext.startActivity(intent);
+                //mContext.finish();
             }
         });
         return button;

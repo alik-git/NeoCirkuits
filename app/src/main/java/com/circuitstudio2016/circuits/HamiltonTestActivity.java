@@ -1,23 +1,25 @@
 package com.circuitstudio2016.circuits;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class HamiltonTestActivity extends HamiltonActivity {
 
-    private String message;
+    //private String message;
     private int currentNum;
+    private RelativeLayout relativeLayout;
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_graph_test);
+        relativeLayout = (RelativeLayout) findViewById(R.id.graph_test_relative);
+        init(new HamiltonCircuit(getGraph()), relativeLayout);
 
         message = "";
         if (this.getIntent().hasExtra("message")) {
@@ -45,17 +47,37 @@ public class HamiltonTestActivity extends HamiltonActivity {
         //make message
         TextView messageView = new TextView(this);
         messageView.setTextSize(25);
-        messageView.setText(message);
+        String text = "(H)" + message;
+        messageView.setText(text);
         messageView.setX(32);
         messageView.setY(50);
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
-        getLayout().addView(messageView, lp);
+        relativeLayout.addView(messageView, lp);
     }
 
     public int getCurrentNum() {
         return currentNum;
     }
 
+
+    public RelativeLayout getRelativeLayout() {
+        return relativeLayout;
+    }
+
+    public void switchMode(View w) {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        System.out.println(currentNum);
+        bundle.putParcelable("graph", new Graph(getGraph()));
+        intent.putExtras(bundle);
+        String message = "Graph " + (Integer.toString(currentNum));
+        intent.putExtra("message", message);
+        intent.setClass(this, EulerTestActivity.class);
+        //intent.setAction("circuit");
+        startActivity(intent);
+        finish();
+
+    }
 
     public void checkWon(){
         System.out.println("yopoooooooooooooooooooooooooooo22222fgdsgsgf222222");

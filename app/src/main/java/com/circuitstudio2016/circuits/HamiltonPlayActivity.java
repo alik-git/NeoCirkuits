@@ -57,7 +57,7 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
 
             //make button
             Button nextButton = new Button(this);
-            nextButton.setText("Next");
+            nextButton.setText("Nextjijijijiji");
             nextButton.setTextSize(24);
             nextButton.setX(screenX - Math.round(screenX/3.1));
             nextButton.setY(screenY - screenY/7);
@@ -77,7 +77,7 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
                     finish();
                 }
             });
-            getLayout().addView(nextButton);
+            getRelativeLayout().addView(nextButton);
         }
     }
 }

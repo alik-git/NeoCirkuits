@@ -1,14 +1,22 @@
 package com.circuitstudio2016.circuits;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class HamiltonActivity extends AppCompatActivity implements View.OnTouchListener {
     private HamiltonPath path;
@@ -19,18 +27,66 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
     private RelativeLayout layout;
     int screenX, screenY;
     String message;
+    private Graph graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hcircuits);
 
-        Graph graph = this.getIntent().getExtras().getParcelable("graph");
-        init(new HamiltonCircuit(graph), (RelativeLayout) findViewById(R.id.activity_hcircuits));
+        graph = this.getIntent().getExtras().getParcelable("graph");
+        //init(new HamiltonCircuit(graph), (RelativeLayout) findViewById(R.id.activity_hcircuits));
     }
 
     public DrawView getDrawView() {
         return drawView;
+    }
+
+    public void deleteGraph(View w) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Deleting Graph");
+        builder.setMessage("Are you sure you want to delete this Graph?\n" +
+                "It cannot be recovered.");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                deleteGraphIn();
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    public void deleteGraphIn(){
+        FileOutputStream fos = null;
+        try {
+            FileInputStream fis = this.openFileInput("graphsaves");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            GraphList graphs = (GraphList) ois.readObject();
+            ois.close();
+            fis.close();
+
+            graphs.removeGraph(graph);
+
+            fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+//            Graph gcopy = new Graph(graph);
+//            graphs.addGraph(gcopy);
+//            System.out.println("added graph to list" + graphs);
+            oos.writeObject(graphs);
+            oos.close();
+            fos.close();
+            System.out.println("Graph " + graph + "\n deleted");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("excepted");
+        }
     }
 
     public void init(HamiltonPath path, RelativeLayout layout){
@@ -65,6 +121,10 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
         }
     }
 
+    public void goBack(View v) {
+        finish();
+    }
+
     public boolean nearVertex(float x, float y, Vertex v){
         double distX = Math.abs(x - v.getX());
         double distY = Math.abs(y - v.getY());
@@ -79,6 +139,10 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
                 checkWon();
             }
         }
+    }
+
+    public Graph getGraph() {
+        return graph;
     }
 
     @Override

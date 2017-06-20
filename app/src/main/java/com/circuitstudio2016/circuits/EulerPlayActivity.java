@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EulerPlayActivity extends EulerActivity {
+public class EulerPlayActivity extends EulerTestActivity {
 
     private String message;
     private int currentNum;

@@ -22,4 +22,6 @@
     <string name="current_euler_level">com.circuitstudio2016.circuits.CUR_EULER_LEVEL</string>
     <string name="go_back">Back</string>
     <string name="delete_graph">Delete</string>
+    <string name="euler_mode">Euler Mode</string>
+    <string name="switch_mode">Switch\nMode</string>
 </resources>
