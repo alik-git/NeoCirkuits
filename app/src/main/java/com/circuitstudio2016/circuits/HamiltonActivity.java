@@ -77,7 +77,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 //            Graph gcopy = new Graph(graph);
-//            graphs.addGraph(gcopy);
+//            graphs.addHamiltonGraph(gcopy);
 //            System.out.println("added graph to list" + graphs);
             oos.writeObject(graphs);
             oos.close();

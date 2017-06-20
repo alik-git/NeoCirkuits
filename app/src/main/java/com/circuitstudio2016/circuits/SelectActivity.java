@@ -10,14 +10,16 @@ import android.widget.GridView;
 
 public class SelectActivity extends AppCompatActivity {
 
-    private GraphList graphs;
+
+
+    private GraphList graphs = new GraphList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
 
-        graphs = this.getIntent().getExtras().getParcelable("graphs");
+
 
 //        GridView gridView = (GridView) findViewById(R.id.activity_select_grid);
 //        String[]
@@ -52,7 +54,11 @@ public class SelectActivity extends AppCompatActivity {
 
     }
 
-    public GraphList getGraphs() {
+    public GraphList getMyGraphs() {
         return graphs;
+    }
+
+    public void setMyGraphs(GraphList graphs) {
+        this.graphs = graphs;
     }
 }

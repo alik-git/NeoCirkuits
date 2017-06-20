@@ -52,7 +52,7 @@
         <activity android:name=".ECircuitLevelsActivity" />
         <activity android:name=".GraphLoadActivity" />
         <activity android:name=".SelectActivity" />
-        <activity android:name=".HamiltonLevelsActivity"></activity>
+        <activity android:name=".GraphLevelsActivity"></activity>
     </application>
 
 </manifest>

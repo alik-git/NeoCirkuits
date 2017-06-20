@@ -1,11 +1,16 @@
 package com.circuitstudio2016.circuits;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.GridView;
 
-public class PlayActivity extends AppCompatActivity {
+
+public class GraphLevelsActivity extends SelectActivity {
+
+    private int levels_unlocked;
+    private GraphList unlocked_graphs;
 
     private GraphList hamiltonGraphs = new GraphList();
     private GraphList eulerGraphs = new GraphList();
@@ -61,24 +66,46 @@ public class PlayActivity extends AppCompatActivity {
             "I: edone\n");
 
     private Graph hg4 = this.parser.parse("I: #0 Graph(6):\n" +
-            "I: (270, 1035)\n" +
-            "I: (540, 1395)\n" +
-            "I: (900, 1035)\n" +
-            "I: (810, 495)\n" +
-            "I: (270, 585)\n" +
-            "I: (720, 855)\n" +
+            "I: (360, 1125)\n" +
+            "I: (270, 675)\n" +
+            "I: (720, 585)\n" +
+            "I: (900, 1215)\n" +
+            "I: (270, 1395)\n" +
+            "I: (810, 855)\n" +
             "I: vdone\n" +
-            "I: Edges(8):\n" +
+            "I: Edges(7):\n" +
             "I: (0to2)\n" +
             "I: (0to3)\n" +
-            "I: (0to5)\n" +
+            "I: (0to4)\n" +
             "I: (1to2)\n" +
-            "I: (1to4)\n" +
-            "I: (1to5)\n" +
-            "I: (2to3)\n" +
-            "I: (3to4)\n" +
+            "I: (1to3)\n" +
+            "I: (2to5)\n" +
+            "I: (4to5)\n" +
             "I: edone");
-    //    private Graph hg5 = this.parser.parse("");
+
+
+    private Graph hg5 = this.parser.parse("I: #2 Graph(7):\n" +
+            "I: (270, 855)\n" +
+            "I: (720, 585)\n" +
+            "I: (810, 1215)\n" +
+            "I: (360, 1305)\n" +
+            "I: (540, 1035)\n" +
+            "I: (180, 495)\n" +
+            "I: (900, 855)\n" +
+            "I: vdone\n" +
+            "I: Edges(9):\n" +
+            "I: (0to1)\n" +
+            "I: (0to3)\n" +
+            "I: (0to6)\n" +
+            "I: (1to2)\n" +
+            "I: (2to3)\n" +
+            "I: (2to4)\n" +
+            "I: (3to4)\n" +
+            "I: (4to5)\n" +
+            "I: (5to6)\n" +
+            "I: edone\n");
+
+
 //    private Graph hg6 = this.parser.parse("");
 //    private Graph hg7 = this.parser.parse("");
 //    private Graph hg8 = this.parser.parse("");
@@ -190,6 +217,7 @@ public class PlayActivity extends AppCompatActivity {
 //    private Graph eg38 = this.parser.parse("");
 //    private Graph eg39 = this.parser.parse("");
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -197,66 +225,73 @@ public class PlayActivity extends AppCompatActivity {
         addHamiltonGraph(hg2);
         addHamiltonGraph(hg3);
         addHamiltonGraph(hg4);
+        addHamiltonGraph(hg5);
 
         addEulerGraph(eg1);
         addEulerGraph(eg2);
 
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play);
-        System.out.println("load func: " + getHamiltonGraphs());
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String unlocked = this.getIntent().getStringExtra("unlocked");
+        levels_unlocked = prefs.getInt(unlocked, 85678);
+        System.out.println("CURRENT RESPECTIVE LEVEL UNLOCKED IS: " + unlocked + "\n" + levels_unlocked);
+        if (levels_unlocked == 85678) { levels_unlocked = 1; }
+        GraphList tempGraphs;
+        if ( this.getIntent().getStringExtra("type").equals("Hamilton")) {
+            tempGraphs = hamiltonGraphs;
+        } else {
+            tempGraphs = eulerGraphs;
+        }
+
+//        ArrayList<Graph> graphs2 = tempGraphs.getGraphs();
+//        System.out.println(tempGraphs.getGraphs() + graphs2.toString() + "\nhubhubhubhubhub");
+        getMyGraphs().setGraphs(tempGraphs.getGraphs());
+
+
+
+        unlocked_graphs = getMyGraphs().getUpto(levels_unlocked);
+
+        GridView gridView = (GridView) findViewById(R.id.activity_select_grid);
+        String[] type = {"Level ", this.getIntent().getStringExtra("type")};
+        final LevelsGraphsAdapter levelsGraphsAdapter =
+                new LevelsGraphsAdapter(this, unlocked_graphs.getGraphsArray(), type);
+        gridView.setAdapter(levelsGraphsAdapter);
+
+        if (this.getIntent().hasExtra("rush")) {
+
+            int toload = this.getIntent().getIntExtra("rush", 1);
+            System.out.println("TRYING TO RUSH TO: " + toload);
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("graph", this.unlocked_graphs.getGraph(toload));
+            intent.putExtras(bundle);
+            String message = "Level " + (Integer.toString(toload + 1));
+            intent.putExtra("message", message);
+            if (type[1].equals("Hamilton")) {
+                intent.setClass(this, HamiltonPlayActivity.class);
+            } else {
+                intent.setClass(this, EulerPlayActivity.class);
+            }
+            //intent.setAction("circuit");
+            startActivity(intent);
+            finish();
+        }
     }
 
-
-    public void hamilton(View w){
-//        Intent intent = new Intent();
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelable("graph", Graph.makeSimpleGraph());
-//        intent.putExtras(bundle);
-//        intent.setClass(this, HamiltonActivity.class);
-//        intent.setAction("circuit");
-//        startActivity(intent);
-
-        Intent intent = new Intent(this, GraphLevelsActivity.class);
-//        intent.putExtra("level_string", getResources().getString(R.string.current_hamilton_level));
-//        intent.putExtra("type", "hamilton");
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelable("hamilton_graphs", hamiltonGraphs);
-//        intent.putExtras(bundle);
-        intent.putExtra("unlocked", getResources().getString(R.string.current_hamilton_level));
-        intent.putExtra("type", "Hamilton");
-        startActivity(intent);
-        //lll
+    public int getLevels_unlocked() {
+        return levels_unlocked;
     }
 
-    public void euler(View w){
-//        Intent intent = new Intent();
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelable("graph", Graph.makeSimpleGraph());
-//        intent.putExtras(bundle);
-//        intent.setClass(this, HamiltonActivity.class);
-//        intent.setAction("path");
-//        startActivity(intent);
-
-        Intent intent = new Intent(this, GraphLevelsActivity.class);
-
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelable("euler_graphs", eulerGraphs);
-//        intent.putExtras(bundle);
-
-        intent.putExtra("unlocked", getResources().getString(R.string.current_euler_level));
-        intent.putExtra("type", "Euler");
-        startActivity(intent);
+    public GraphList getUnlocked_graphs() {
+        return unlocked_graphs;
     }
-
 
     public void addHamiltonGraph(Graph g) {
         this.hamiltonGraphs.addGraph(g);
     }
 
     public void addEulerGraph(Graph g) {this.eulerGraphs.addGraph(g);}
-
-    public GraphList getHamiltonGraphs() {
-        return this.hamiltonGraphs;
-    }
 
 }

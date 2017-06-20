@@ -16,6 +16,9 @@ import android.widget.Button;
 public class GraphsAdapter extends BaseAdapter {
 
     private final Activity mContext;
+
+
+
     private final Graph[] graphs;
     private final String[] type;
 
@@ -79,9 +82,24 @@ public class GraphsAdapter extends BaseAdapter {
                 }
                 intent.setAction("circuit");
                 mContext.startActivity(intent);
+                if (type[0].equals("Level ")) {
+                    mContext.finish();
+                }
                 //mContext.finish();
             }
         });
         return button;
+    }
+
+    public Activity getmContext() {
+        return mContext;
+    }
+
+    public Graph[] getGraphs() {
+        return graphs;
+    }
+
+    public String[] getType() {
+        return type;
     }
 }

@@ -8,14 +8,40 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class HamiltonPlayActivity extends HamiltonTestActivity {
+public class HamiltonPlayActivity extends HamiltonActivity {
+
+    private int currentNum;
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_graph_play);
+        relativeLayout = (RelativeLayout) findViewById(R.id.graph_play_relative);
+        init(new HamiltonCircuit(getGraph()), relativeLayout);
 
+        message = "";
+        if (this.getIntent().hasExtra("message")) {
+            message = this.getIntent().getStringExtra("message");
+            currentNum =  Character.getNumericValue(message.charAt(message.length()- 1));
+        }
+
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
+//        getLayout().addView(endButton, lp);
+
+        //make message
+        TextView messageView = new TextView(this);
+        messageView.setTextSize(25);
+        String text = "Hamilton\n" + message;
+        messageView.setText(text);
+        messageView.setX(32);
+        messageView.setY(50);
+        messageView.setTextColor(getResources().getColor(R.color.neon_green));
+        relativeLayout.addView(messageView, lp);
     }
 
     @Override
@@ -23,6 +49,11 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
+            Intent intent = new Intent();
+            intent.setClass(this, GraphLevelsActivity.class);
+            intent.putExtra("unlocked", getResources().getString(R.string.current_hamilton_level));
+            intent.putExtra("type", "Hamilton");
+            startActivity(intent);
             finish();
         }
         return super.onKeyDown(keyCode, event);
@@ -37,9 +68,9 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
             SharedPreferences prefs =
                     PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             int chlevel = prefs.getInt(getResources().getString(R.string.current_hamilton_level), 1);
-            System.out.println("CURRENT NUM IS: " + super.getCurrentNum() + " AND THE OTHER ONE " +
+            System.out.println("CURRENT NUM IS: " + getCurrentNum() + " AND THE OTHER ONE " +
                 "IS JUST OPENED TO : " + chlevel + "\n");
-            if (super.getCurrentNum() == chlevel) {
+            if (getCurrentNum() == chlevel) {
                 System.out.println("THIS HAPPENENEN ENENFNEOF NIWF ISNI J O");
                 chlevel++;
                 prefs.edit().putInt(getResources().getString(
@@ -57,7 +88,7 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
 
             //make button
             Button nextButton = new Button(this);
-            nextButton.setText("Nextjijijijiji");
+            nextButton.setText("Next");
             nextButton.setTextSize(24);
             nextButton.setX(screenX - Math.round(screenX/3.1));
             nextButton.setY(screenY - screenY/7);
@@ -68,11 +99,11 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent();
                     System.out.println("CURRENT NUM IS: " +
-                            HamiltonPlayActivity.super.getCurrentNum());
-                    intent.putExtra("level_string", getResources().getString(R.string.current_hamilton_level));
-                    intent.putExtra("type", "hamilton");
-                    intent.putExtra("rush", HamiltonPlayActivity.super.getCurrentNum());
-                    intent.setClass(getApplicationContext(), HCircuitLevelsActivity.class);
+                            getCurrentNum());
+                    intent.putExtra("unlocked", getResources().getString(R.string.current_hamilton_level));
+                    intent.putExtra("type", "Hamilton");
+                    intent.putExtra("rush", getCurrentNum());
+                    intent.setClass(getApplicationContext(), GraphLevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -80,4 +111,14 @@ public class HamiltonPlayActivity extends HamiltonTestActivity {
             getRelativeLayout().addView(nextButton);
         }
     }
+
+    public int getCurrentNum() {
+        return currentNum;
+    }
+
+
+    public RelativeLayout getRelativeLayout() {
+        return relativeLayout;
+    }
+
 }

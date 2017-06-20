@@ -43,10 +43,21 @@ public class GraphList implements Parcelable, Serializable{
 
     };
 
-    public ArrayList<Graph> getGraphs() { return graphs; }
+    public ArrayList<Graph> getGraphs() { return this.graphs; }
 
     public void setGraphs(ArrayList<Graph> graphs) {
         this.graphs = graphs;
+    }
+
+    public GraphList getUpto(int upTo) {
+        if (upTo > graphs.size()) {
+            return this;
+        }
+        GraphList result = new GraphList();
+        for (int num = 0; num < upTo; num++) {
+            result.addGraph(graphs.get(num));
+        }
+        return result;
     }
 
     public Graph[] getGraphsArray() { return graphs.toArray(new Graph[graphs.size()]); }

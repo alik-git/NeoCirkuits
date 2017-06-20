@@ -9,7 +9,7 @@ import android.view.View;
 
 public class LevelsActivity extends AppCompatActivity {
 
-    private GraphList graphs = new GraphList();;
+    private GraphList graphs = new GraphList();
     private GraphParser parser = new GraphParser();
     private String level_string, type;
 

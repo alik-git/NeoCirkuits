@@ -61,20 +61,20 @@ public class EulerTestActivity extends HamiltonActivity {
     }
 
     public void checkWon(){
-        if(super.getPath().isEulerFinished()){
-            Button endButton = new Button(this);
-            endButton.setText("Go Back");
-            endButton.setX(screenX/3);
-            endButton.setY(screenY*2/5);
-            endButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(screenX/3, screenY/12);
-            relativeLayout.addView(endButton, lp);
-        }
+//        if(super.getPath().isEulerFinished()){
+//            Button endButton = new Button(this);
+//            endButton.setText("Go Back");
+//            endButton.setX(screenX/3);
+//            endButton.setY(screenY*2/5);
+//            endButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    finish();
+//                }
+//            });
+//            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(screenX/3, screenY/12);
+//            relativeLayout.addView(endButton, lp);
+//        }
     }
 
     public void switchMode(View w) {

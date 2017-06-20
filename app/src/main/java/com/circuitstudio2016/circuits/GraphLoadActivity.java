@@ -1,12 +1,6 @@
 package com.circuitstudio2016.circuits;
 
-import android.graphics.Color;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -21,10 +15,16 @@ public class GraphLoadActivity extends SelectActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        GraphList tempGraphs = this.getIntent().getExtras().getParcelable("graphs");
+
+//        ArrayList<Graph> graphs2 = tempGraphs.getGraphs();
+//        System.out.println(tempGraphs.getGraphs() + graphs2.toString() + "\nhubhubhubhubhub");
+        getMyGraphs().setGraphs(tempGraphs.getGraphs());
+
         GridView gridView = (GridView) findViewById(R.id.activity_select_grid);
         String[] type = {"Graph ", "Hamilton"};
         final GraphsAdapter graphsAdapter =
-                new GraphsAdapter(this, getGraphs().getGraphsArray(), type);
+                new GraphsAdapter(this, getMyGraphs().getGraphsArray(), type);
         gridView.setAdapter(graphsAdapter);
     }
 
