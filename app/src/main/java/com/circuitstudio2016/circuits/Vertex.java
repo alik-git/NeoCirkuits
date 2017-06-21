@@ -12,6 +12,9 @@ import java.util.Random;
 
 public class Vertex implements Parcelable, Serializable{
     private int x;
+
+
+
     private int y;
     int newx =0;
     int newy =0;
@@ -298,6 +301,14 @@ public class Vertex implements Parcelable, Serializable{
             }
         }
         return false;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public String toString(){

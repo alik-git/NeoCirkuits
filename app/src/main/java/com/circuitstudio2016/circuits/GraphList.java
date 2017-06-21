@@ -86,7 +86,7 @@ public class GraphList implements Parcelable, Serializable{
 
     public String toString() {
         String s = "------------\n";
-        s += "GraphList(" + graphs.size() + "):\n";
+        s += "GraphList(" + graphs.size() + "):-----------------------------------\n";
         int i = 0;
         for (Graph g: graphs) {
             s += "#" + i + " " + g.toString() + "\n";

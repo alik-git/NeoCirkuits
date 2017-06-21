@@ -56,6 +56,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         //I commented out your tester for now -Ali
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
+            graph.center();
             bundle.putParcelable("graph", graph);
             intent.putExtras(bundle);
             if (type.equals("Hamilton")) {
@@ -110,8 +111,8 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public boolean withinBounds(float x, float y) {
-        if (x >= (screenX/12) && x <= (screenX - (screenX/12)*2) ) {
-            if (y >= ((screenX/12)*4) && y <= (screenY - ((screenX/12)*5))) {
+        if (x >= (screenX/12) && x <= (screenX - (screenX/12)*3) ) {
+            if (y >= ((screenX/12)*4) && y <= (screenY - ((screenX/12)*4))) {
                 return true;
             }
         }
@@ -158,6 +159,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         try {
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
+            graph.center();
             Graph gcopy = new Graph(graph);
             graphs.addGraph(gcopy);
             System.out.println("added graph to list" + graphs);

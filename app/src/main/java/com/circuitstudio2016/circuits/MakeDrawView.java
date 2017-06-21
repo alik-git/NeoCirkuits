@@ -1,10 +1,12 @@
 package com.circuitstudio2016.circuits;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import java.util.Arrays;
@@ -53,6 +55,7 @@ public class MakeDrawView extends View {
             //System.out.println((x+45) + "   " + x/90);
         }
 
+
         //horizontal lines
         for (int y = 0; y <= screenY; y += screenX/12) {
             paint.setStrokeWidth(1);
@@ -62,6 +65,15 @@ public class MakeDrawView extends View {
             if (Arrays.asList(strokeY).contains(y2)) { paint.setStrokeWidth(3);}
             canvas.drawLine(0, y, screenX, y, paint);
         }
+
+        //mid lines
+        paint.setStrokeWidth(3);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        canvas.drawLine(0, height/2, width, height/2, paint);
+        canvas.drawLine(width/2, 0, width/2, height, paint);
 
 
         // draw all connection
