@@ -7,21 +7,6 @@
     tools:context="com.circuitstudio2016.circuits.AboutActivity">
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="8dp"
-        android:text="This app was made by my friend Jacob and I. We are Computer Science students at the University of Toronto (Mississauga). This was a great way to apply what we learned in class, and get familiar with andorid developement in the process. All of the code is public, and available to mess with at:"
-        android:textAlignment="textStart"
-        android:textColor="@color/neon_green"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,18 +20,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textView14"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="224dp"
-        android:text="This app was made by my friend Jacob and I. We are Computer Science students at the University of Toronto (Mississauga). This was a great way to apply what we learned in class, and get familiar with andorid developement in the process. All of the code is public, and available to mess with at:"
+        android:layout_marginTop="8dp"
+        android:text="This app was made by my friend Jacob and I. We are Computer Science students at the University of Toronto (Mississauga). This was a great way to apply what we learned in class, and get familiar with Android Development in the process. All of the code is public, and available to mess with at: github.com/aliqk1603/NeoCirkuits\nThank you for checking out our first ever contribution to the open source community! We are big believers in sharing, and helping people learn. We hope you have as much fun playing this game as we had making it. "
         android:textAlignment="textStart"
         android:textColor="@color/neon_green"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:text="&quot;Hard work beats talent when talent doesn't work hard&quot; -Tim Notke"
+        android:textAlignment="textStart"
+        android:textColor="@color/neon_green"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
