@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff4081</color>
     <color name="neon_green">#40ff70</color>
     <color name="neon_blue">#00e1ff</color>
+    <color name="redAF">#ff0004</color>
 </resources>

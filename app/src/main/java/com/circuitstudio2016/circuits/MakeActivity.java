@@ -26,6 +26,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private int screenX, screenY;
     private ArrayList<UndoCommand> undos;
     private GraphList graphs;
+    private boolean deleteMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,15 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         return false;
     }
 
+    public void deleteNearVertex(float x, float y, int factor){
+        for(Vertex v: graph.getVertices()) {
+            if(nearVertex(x, y, v, factor)){
+                graph.removeVertex(v);
+                return;
+            }
+        }
+    }
+
     public boolean nearVertex(float x, float y, Vertex v, int factor){
         if(distance(x, y, v) <= screenX/factor){
             return true;
@@ -123,18 +133,25 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if(!nearAnyVertex(e.getX(), e.getY(), 6) && withinBounds(e.getX(), e.getY())){
-                    Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
-                    graph.addVertex(vrtx);
-                    undos.add(new UndoVertex(vrtx, graph));
-                    prev = vrtx;
-                }
-                for(Vertex vrtx: graph.getVertices()){
-                    if(nearVertex(e.getX(), e.getY(), vrtx, 6)){
+                if (deleteMode) {
+                    deleteNearVertex(e.getX(), e.getY(), 6);
+                    break;
+                } else {
+                    if(!nearAnyVertex(e.getX(), e.getY(), 6) && withinBounds(e.getX(), e.getY())){
+                        Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
+                        graph.addVertex(vrtx);
+                        undos.add(new UndoVertex(vrtx, graph));
                         prev = vrtx;
                     }
+                    for(Vertex vrtx: graph.getVertices()){
+                        if(nearVertex(e.getX(), e.getY(), vrtx, 6)){
+                            prev = vrtx;
+                        }
+                    }
+                    break;
+
                 }
-                break;
+
             case MotionEvent.ACTION_MOVE:
                 for(Vertex vrtx: graph.getVertices()) {
                     if (nearVertex(e.getX(), e.getY(), vrtx, 12) && prev != null && vrtx != prev) {
@@ -238,5 +255,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             undos.remove(undos.size()-1);
             drawView.invalidate();
         }
+    }
+
+    public void toggleDeleteMode(View w) {
+        deleteMode = !deleteMode;
     }
 }

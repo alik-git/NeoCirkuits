@@ -19,4 +19,12 @@
         <item name="android:textColorSecondaryInverse">@android:color/black</item>
     </style>
 
+    <style name="aaaToggleButton" parent="Theme.AppCompat.NoActionBar" >
+        <item name="colorPrimaryDark">@color/redAF</item>
+        <item name="colorAccent">@color/redAF</item>
+        <item name="android:textColorPrimary">@color/redAF</item>
+        <item name="android:textColorSecondary">@color/redAF</item>
+        <item name="colorPrimary">@color/redAF</item>
+    </style>
+
 </resources>
