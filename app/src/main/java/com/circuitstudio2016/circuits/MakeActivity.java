@@ -111,7 +111,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public boolean withinBounds(float x, float y) {
-        if (x >= (screenX/12) && x <= (screenX - (screenX/12)*3) ) {
+        if (x >= (screenX/12) && x <= (screenX - (screenX/12)*2) ) {
             if (y >= ((screenX/12)*4) && y <= (screenY - ((screenX/12)*4))) {
                 return true;
             }
@@ -162,7 +162,8 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             graph.center();
             Graph gcopy = new Graph(graph);
             graphs.addGraph(gcopy);
-            System.out.println("added graph to list" + graphs);
+            System.out.println("added graph to list-----------------\n" + graph);
+            System.out.println("added graph to list-----------------");
             oos.writeObject(graphs);
             oos.close();
             fos.close();

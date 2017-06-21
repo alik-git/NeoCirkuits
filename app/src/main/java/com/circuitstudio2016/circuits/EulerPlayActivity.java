@@ -29,7 +29,7 @@ public class EulerPlayActivity extends HamiltonActivity {
         message = "";
         if (this.getIntent().hasExtra("message")) {
             message = this.getIntent().getStringExtra("message");
-            currentNum =  Character.getNumericValue(message.charAt(message.length()- 1));
+            currentNum =  this.getIntent().getIntExtra("currentNum", 1);
         }
 
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);

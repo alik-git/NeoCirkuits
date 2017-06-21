@@ -24,7 +24,7 @@ public class HamiltonTestActivity extends HamiltonActivity {
         message = "";
         if (this.getIntent().hasExtra("message")) {
             message = this.getIntent().getStringExtra("message");
-            currentNum =  Character.getNumericValue(message.charAt(message.length()- 1));
+            currentNum =  this.getIntent().getIntExtra("currentNum", 1);
         }
 //        System.out.println("CURRENT NUM IS: " + currentNum + " AND THE OTHER ONE " +
 //                "IS: " + clevel + "\n");
@@ -80,7 +80,7 @@ public class HamiltonTestActivity extends HamiltonActivity {
     }
 
     public void checkWon(){
-        System.out.println("yopoooooooooooooooooooooooooooo22222fgdsgsgf222222");
+        //System.out.println("yopoooooooooooooooooooooooooooo22222fgdsgsgf222222");
         if(getPath().isDone()){
             Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
             t1.show();

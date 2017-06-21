@@ -223,17 +223,266 @@ public class GraphLevelsActivity extends SelectActivity {
             "I: (3to5)\n" +
             "I: (4to5)\n" +
             "I: edone");
-    private Graph hg11 = this.parser.parse("");
-    private Graph hg12 = this.parser.parse("");
-    private Graph hg13 = this.parser.parse("");
-    private Graph hg14 = this.parser.parse("");
-    private Graph hg15 = this.parser.parse("");
-    private Graph hg16 = this.parser.parse("");
-    private Graph hg17 = this.parser.parse("");
-    private Graph hg18 = this.parser.parse("");
-    private Graph hg19 = this.parser.parse("");
-    private Graph hg20 = this.parser.parse("");
-    private Graph hg21 = this.parser.parse("");
+    private Graph hg11 = this.parser.parse("I: #0 Graph(9):\n" +
+            "I: (540, 960)\n" +
+            "I: (270, 960)\n" +
+            "I: (810, 960)\n" +
+            "I: (720, 690)\n" +
+            "I: (360, 690)\n" +
+            "I: (540, 510)\n" +
+            "I: (720, 1230)\n" +
+            "I: (360, 1230)\n" +
+            "I: (540, 1410)\n" +
+            "I: vdone\n" +
+            "I: Edges(11):\n" +
+            "I: (0to1)\n" +
+            "I: (0to2)\n" +
+            "I: (0to6)\n" +
+            "I: (0to7)\n" +
+            "I: (1to3)\n" +
+            "I: (2to4)\n" +
+            "I: (2to7)\n" +
+            "I: (3to5)\n" +
+            "I: (4to5)\n" +
+            "I: (6to8)\n" +
+            "I: (7to8)\n" +
+            "I: edone");
+    private Graph hg12 = this.parser.parse("I: #1 Graph(9):\n" +
+            "I: (540, 960)\n" +
+            "I: (270, 960)\n" +
+            "I: (810, 960)\n" +
+            "I: (720, 690)\n" +
+            "I: (360, 690)\n" +
+            "I: (540, 510)\n" +
+            "I: (720, 1230)\n" +
+            "I: (360, 1230)\n" +
+            "I: (540, 1410)\n" +
+            "I: vdone\n" +
+            "I: Edges(13):\n" +
+            "I: (0to3)\n" +
+            "I: (0to4)\n" +
+            "I: (0to5)\n" +
+            "I: (0to8)\n" +
+            "I: (1to6)\n" +
+            "I: (1to7)\n" +
+            "I: (2to4)\n" +
+            "I: (2to7)\n" +
+            "I: (3to4)\n" +
+            "I: (3to5)\n" +
+            "I: (4to5)\n" +
+            "I: (6to8)\n" +
+            "I: (7to8)\n" +
+            "I: edone");
+    private Graph hg13 = this.parser.parse("Graph(9):\n" +
+            "I: (360, 915)\n" +
+            "I: (720, 915)\n" +
+            "I: (810, 1185)\n" +
+            "I: (270, 1185)\n" +
+            "I: (540, 1365)\n" +
+            "I: (270, 735)\n" +
+            "I: (810, 735)\n" +
+            "I: (540, 555)\n" +
+            "I: (540, 1095)\n" +
+            "I: vdone\n" +
+            "I: Edges(13):\n" +
+            "I: (0to1)\n" +
+            "I: (0to3)\n" +
+            "I: (0to5)\n" +
+            "I: (0to8)\n" +
+            "I: (1to2)\n" +
+            "I: (1to6)\n" +
+            "I: (2to4)\n" +
+            "I: (2to8)\n" +
+            "I: (3to4)\n" +
+            "I: (4to8)\n" +
+            "I: (5to7)\n" +
+            "I: (6to7)\n" +
+            "I: (7to8)\n" +
+            "I: edone");
+    private Graph hg14 = this.parser.parse("I: Graph(8):\n" +
+            "I: (270, 735)\n" +
+            "I: (810, 735)\n" +
+            "I: (810, 1455)\n" +
+            "I: (270, 1455)\n" +
+            "I: (450, 1185)\n" +
+            "I: (630, 915)\n" +
+            "I: (450, 465)\n" +
+            "I: (810, 1185)\n" +
+            "I: vdone\n" +
+            "I: Edges(11):\n" +
+            "I: (0to5)\n" +
+            "I: (0to3)\n" +
+            "I: (0to6)\n" +
+            "I: (1to6)\n" +
+            "I: (1to5)\n" +
+            "I: (2to7)\n" +
+            "I: (2to3)\n" +
+            "I: (3to4)\n" +
+            "I: (4to7)\n" +
+            "I: (4to6)\n" +
+            "I: (5to7)\n" +
+            "I: edone");
+    private Graph hg15 = this.parser.parse("I: Graph(9):\n" +
+            "I: (810, 1095)\n" +
+            "I: (270, 1095)\n" +
+            "I: (450, 1455)\n" +
+            "I: (720, 1455)\n" +
+            "I: (540, 1095)\n" +
+            "I: (810, 645)\n" +
+            "I: (360, 735)\n" +
+            "I: (270, 465)\n" +
+            "I: (540, 465)\n" +
+            "I: vdone\n" +
+            "I: Edges(12):\n" +
+            "I: (0to3)\n" +
+            "I: (0to8)\n" +
+            "I: (1to2)\n" +
+            "I: (1to5)\n" +
+            "I: (1to6)\n" +
+            "I: (2to4)\n" +
+            "I: (2to3)\n" +
+            "I: (3to4)\n" +
+            "I: (4to5)\n" +
+            "I: (5to7)\n" +
+            "I: (6to7)\n" +
+            "I: (6to8)\n" +
+            "I: edone");
+    private Graph hg16 = this.parser.parse("I: Graph(8):\n" +
+            "I: (855, 735)\n" +
+            "I: (855, 1185)\n" +
+            "I: (315, 1365)\n" +
+            "I: (225, 1005)\n" +
+            "I: (405, 465)\n" +
+            "I: (675, 645)\n" +
+            "I: (495, 1095)\n" +
+            "I: (675, 1455)\n" +
+            "I: vdone\n" +
+            "I: Edges(11):\n" +
+            "I: (0to3)\n" +
+            "I: (0to1)\n" +
+            "I: (0to5)\n" +
+            "I: (1to4)\n" +
+            "I: (1to7)\n" +
+            "I: (2to6)\n" +
+            "I: (2to4)\n" +
+            "I: (2to3)\n" +
+            "I: (3to5)\n" +
+            "I: (5to7)\n" +
+            "I: (6to7)\n" +
+            "I: edone");
+    private Graph hg17 = this.parser.parse("I: Graph(8):\n" +
+            "I: (540, 825)\n" +
+            "I: (540, 1275)\n" +
+            "I: (270, 915)\n" +
+            "I: (810, 915)\n" +
+            "I: (810, 465)\n" +
+            "I: (360, 465)\n" +
+            "I: (180, 1455)\n" +
+            "I: (900, 1185)\n" +
+            "I: vdone\n" +
+            "I: Edges(11):\n" +
+            "I: (0to1)\n" +
+            "I: (0to4)\n" +
+            "I: (0to2)\n" +
+            "I: (1to6)\n" +
+            "I: (1to7)\n" +
+            "I: (2to7)\n" +
+            "I: (2to6)\n" +
+            "I: (2to5)\n" +
+            "I: (3to5)\n" +
+            "I: (3to7)\n" +
+            "I: (4to5)\n" +
+            "I: edone");
+    private Graph hg18 = this.parser.parse("I: Graph(8):\n" +
+            "I: (225, 870)\n" +
+            "I: (675, 870)\n" +
+            "I: (405, 1140)\n" +
+            "I: (225, 1410)\n" +
+            "I: (675, 1410)\n" +
+            "I: (765, 600)\n" +
+            "I: (315, 510)\n" +
+            "I: (855, 1140)\n" +
+            "I: vdone\n" +
+            "I: Edges(11):\n" +
+            "I: (0to1)\n" +
+            "I: (0to6)\n" +
+            "I: (0to3)\n" +
+            "I: (1to5)\n" +
+            "I: (1to4)\n" +
+            "I: (2to6)\n" +
+            "I: (2to3)\n" +
+            "I: (2to4)\n" +
+            "I: (3to4)\n" +
+            "I: (4to7)\n" +
+            "I: (5to7)\n" +
+            "I: edone");
+    private Graph hg19 = this.parser.parse("I: Graph(8):\n" +
+            "I: (225, 870)\n" +
+            "I: (675, 870)\n" +
+            "I: (405, 1140)\n" +
+            "I: (225, 1410)\n" +
+            "I: (675, 1410)\n" +
+            "I: (765, 600)\n" +
+            "I: (315, 510)\n" +
+            "I: (855, 1140)\n" +
+            "I: vdone\n" +
+            "I: Edges(11):\n" +
+            "I: (0to7)\n" +
+            "I: (0to5)\n" +
+            "I: (0to3)\n" +
+            "I: (1to4)\n" +
+            "I: (1to7)\n" +
+            "I: (1to2)\n" +
+            "I: (2to6)\n" +
+            "I: (2to3)\n" +
+            "I: (3to4)\n" +
+            "I: (5to6)\n" +
+            "I: (5to7)\n" +
+            "I: edone");
+    private Graph hg20 = this.parser.parse("I: Graph(9):\n" +
+            "I: (585, 915)\n" +
+            "I: (855, 825)\n" +
+            "I: (315, 645)\n" +
+            "I: (855, 1365)\n" +
+            "I: (225, 1185)\n" +
+            "I: (495, 1455)\n" +
+            "I: (585, 1185)\n" +
+            "I: (585, 465)\n" +
+            "I: (855, 555)\n" +
+            "I: vdone\n" +
+            "I: Edges(12):\n" +
+            "I: (0to6)\n" +
+            "I: (0to1)\n" +
+            "I: (0to4)\n" +
+            "I: (1to2)\n" +
+            "I: (1to8)\n" +
+            "I: (2to7)\n" +
+            "I: (2to4)\n" +
+            "I: (2to8)\n" +
+            "I: (3to4)\n" +
+            "I: (3to7)\n" +
+            "I: (4to5)\n" +
+            "I: (5to6)\n" +
+            "I: edone");
+    private Graph hg21 = this.parser.parse("I: Graph(6):\n" +
+            "I: (810, 690)\n" +
+            "I: (540, 420)\n" +
+            "I: (270, 690)\n" +
+            "I: (540, 1500)\n" +
+            "I: (810, 1230)\n" +
+            "I: (270, 1230)\n" +
+            "I: vdone\n" +
+            "I: Edges(9):\n" +
+            "I: (0to1)\n" +
+            "I: (0to2)\n" +
+            "I: (0to5)\n" +
+            "I: (1to3)\n" +
+            "I: (1to2)\n" +
+            "I: (2to5)\n" +
+            "I: (3to4)\n" +
+            "I: (3to5)\n" +
+            "I: (4to5)\n" +
+            "I: edone");
     private Graph hg22 = this.parser.parse("");
     private Graph hg23 = this.parser.parse("");
     private Graph hg24 = this.parser.parse("");
@@ -539,6 +788,7 @@ public class GraphLevelsActivity extends SelectActivity {
             intent.putExtras(bundle);
             String message = "Level " + (Integer.toString(toload + 1));
             intent.putExtra("message", message);
+            intent.putExtra("currentNum", toload + 1);
             if (type[1].equals("Hamilton")) {
                 intent.setClass(this, HamiltonPlayActivity.class);
             } else {

@@ -27,7 +27,7 @@ public class HamiltonPlayActivity extends HamiltonActivity {
         message = "";
         if (this.getIntent().hasExtra("message")) {
             message = this.getIntent().getStringExtra("message");
-            currentNum =  Character.getNumericValue(message.charAt(message.length()- 1));
+            currentNum =  this.getIntent().getIntExtra("currentNum", 1);
         }
 
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
@@ -42,6 +42,38 @@ public class HamiltonPlayActivity extends HamiltonActivity {
         messageView.setY(50);
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
         relativeLayout.addView(messageView, lp);
+
+        SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int chlevel = prefs.getInt(getResources().getString(R.string.current_hamilton_level), 1);
+        System.out.println("CURRENT NUM IS: " + getCurrentNum() + " AND THE OTHER ONE " +
+                "IS JUST OPENED TO : " + chlevel + "\n");
+
+        //if(currentNum < chlevel) {
+            Button nextButton = new Button(this);
+            nextButton.setText("Next");
+            nextButton.setTextSize(24);
+            nextButton.setX(screenX - Math.round(screenX/3.1));
+            nextButton.setY(screenY - screenY/7);
+            nextButton.setTextAppearance(this, R.style.Widget_AppCompat_Button_Borderless);
+            nextButton.setBackgroundColor(Color.BLACK);
+            nextButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    System.out.println("CURRENT NUM IS: " +
+                            getCurrentNum());
+                    intent.putExtra("unlocked", getResources().getString(R.string.current_hamilton_level));
+                    intent.putExtra("type", "Hamilton");
+                    intent.putExtra("rush", getCurrentNum());
+                    intent.setClass(getApplicationContext(), GraphLevelsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            getRelativeLayout().addView(nextButton);
+
+        //}
     }
 
     @Override

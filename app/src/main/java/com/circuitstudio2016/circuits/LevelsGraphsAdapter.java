@@ -41,6 +41,7 @@ public class LevelsGraphsAdapter extends GraphsAdapter {
                 intent.putExtras(bundle);
                 String message = getType()[0] + (Integer.toString(num + 1));
                 intent.putExtra("message", message);
+                intent.putExtra("currentNum", num + 1);
 
                 if (getType()[1].equals("Hamilton")) {
                     intent.setClass(getmContext(), HamiltonPlayActivity.class);

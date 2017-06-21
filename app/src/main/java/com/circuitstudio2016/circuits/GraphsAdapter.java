@@ -67,6 +67,7 @@ public class GraphsAdapter extends BaseAdapter {
                 intent.putExtras(bundle);
                 String message = type[0] + (Integer.toString(num + 1));
                 intent.putExtra("message", message);
+                intent.putExtra("currentNum", num + 1);
                 if (type[0].equals("Graph ")) {
                     //type = mContext.getType();
                     if (type[1].equals("Hamilton")) {
