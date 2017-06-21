@@ -24,6 +24,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void help(View w) {
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void About(View w) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
     public void exit(View w){
         finish();
         System.exit(0);
