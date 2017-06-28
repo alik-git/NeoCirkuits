@@ -177,6 +177,15 @@ public class Graph implements Parcelable, Serializable{
         return s;
     }
 
+    public void proportion(int screenX, int screenY) {
+
+        for (Vertex v : this.vertices) {
+            v.proportion(screenX, screenY);
+        }
+
+
+    }
+
     public void center() {
         int screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
         int screenY = Resources.getSystem().getDisplayMetrics().heightPixels;

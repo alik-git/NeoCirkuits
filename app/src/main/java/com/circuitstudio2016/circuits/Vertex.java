@@ -24,7 +24,9 @@ public class Vertex implements Parcelable, Serializable{
 
 
     private int xx;
+    private float xProp;
     private int yy;
+    private float yProp;
     private int radius = (Resources.getSystem().getDisplayMetrics().widthPixels)/24;
     private int color;
     private boolean isActivated;
@@ -49,6 +51,8 @@ public class Vertex implements Parcelable, Serializable{
             this.y = (90*(Math.round(y/90))+45);
             this.yy = this.y;
         }
+        this.xProp = (float)this.x/1080;
+        this.yProp = (float)this.y/1920;
         this.radius = radius;
         this.color = Color.parseColor("#40ff70");
         connections = new ArrayList<Vertex>();
@@ -70,6 +74,8 @@ public class Vertex implements Parcelable, Serializable{
             this.y = (90*(Math.round(y/90))+45);
             this.yy = this.y;
         }
+        this.xProp = (float)this.x/1080;
+        this.yProp = (float)this.y/1920;
         this.color = Color.parseColor("#40ff70");
         connections = new ArrayList<Vertex>();
     }
@@ -79,6 +85,8 @@ public class Vertex implements Parcelable, Serializable{
         this.xx = this.x;
         this.y = v.getY();
         this.yy = this.y;
+        this.xProp = (float)this.x/1080;
+        this.yProp = (float)this.y/1920;
         this.radius = v.getRadius();
         this.color = v.getColor();
         connections = new ArrayList<Vertex>();
@@ -87,8 +95,10 @@ public class Vertex implements Parcelable, Serializable{
     protected Vertex(Parcel in) {
         x = in.readInt();
         xx = in.readInt();
+        xProp = in.readFloat();
         y = in.readInt();
         yy = in.readInt();
+        yProp = in.readFloat();
         radius = in.readInt();
         color = in.readInt();
         isActivated = in.readByte() != 0;
@@ -99,8 +109,10 @@ public class Vertex implements Parcelable, Serializable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(x);
         dest.writeInt(xx);
+        dest.writeFloat(xProp);
         dest.writeInt(y);
         dest.writeInt(yy);
+        dest.writeFloat(yProp);
         dest.writeInt(radius);
         dest.writeInt(color);
         dest.writeByte((byte) (isActivated ? 1 : 0));
@@ -124,6 +136,8 @@ public class Vertex implements Parcelable, Serializable{
     };
 
     public int getXx() {
+//        System.out.println(Resources.getSystem().getDisplayMetrics().widthPixels);
+//        System.out.println(Resources.getSystem().getDisplayMetrics().heightPixels);
         return xx;
     }
 
@@ -316,5 +330,36 @@ public class Vertex implements Parcelable, Serializable{
         s+= "(" + x + ", ";
         s+= y + ")";
         return s;
+    }
+
+    public float getxProp() {
+        //this.xProp = (float)this.xx/1080;
+        System.out.println("woooo stepx!" + this.xProp);
+        System.out.println("woooo x!" + this.x);
+        return xProp;
+    }
+
+    public void setxProp(float xProp) {
+        this.xProp = xProp;
+    }
+
+    public float getyProp() {
+        //this.yProp = (float)this.yy/1920;
+        System.out.println("woooo step!y" + this.yProp);
+        System.out.println("woooo y!" + this.y);
+        return yProp;
+    }
+
+    public void setyProp(float yProp) {
+        this.yProp = yProp;
+    }
+
+    public void proportion(int sX, int sY) {
+        System.out.println("woooo step666x!" + this.xProp);
+        System.out.println("woooo step666!y" + this.yProp);
+        this.x = Math.round(sX*this.xProp);
+        this.y = Math.round(sY*this.yProp);
+        this.xx = this.x;
+        this.yy = this.y;
     }
 }

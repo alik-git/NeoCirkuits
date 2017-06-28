@@ -1,9 +1,12 @@
 package com.circuitstudio2016.circuits;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 public class DrawView extends View {
@@ -13,6 +16,8 @@ public class DrawView extends View {
     float mouseY;
     int blue = getResources().getColor(R.color.neon_blue);
     int green = getResources().getColor(R.color.neon_green);
+    int tx, ty;
+    int screenX, screenY;
 
     public DrawView(Context context, HamiltonPath path) {
         super(context);
@@ -34,6 +39,16 @@ public class DrawView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenY = displayMetrics.heightPixels;
+        screenX = displayMetrics.widthPixels;
+
+//        screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+//        screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
+        System.out.println("woooo scx!" + screenX);
+        System.out.println("woooo scy!" + screenY);
+
         // step vertices
 
         for ( Vertex v: path.getGraph().getVertices()) {
@@ -45,6 +60,8 @@ public class DrawView extends View {
             paint.setStrokeWidth(10);
             paint.setColor(blue);
             Vertex v = path.getActivated().get(path.getActivated().size()-1);
+            tx = Math.round(screenX*v.getxProp());
+            ty = Math.round(screenY*v.getyProp());
             canvas.drawLine(v.getXx(), v.getYy(), mouseX, mouseY, paint);
         }
         // draw all connection
@@ -54,6 +71,8 @@ public class DrawView extends View {
 
                 paint.setStrokeWidth(10);
                 paint.setColor(green);
+                tx = Math.round(screenX*v.getxProp());
+                ty = Math.round(screenY*v.getyProp());
                 canvas.drawLine(v.getXx(), v.getYy(), vc.getXx(), vc.getYy(), paint);
             }
         }
@@ -63,6 +82,8 @@ public class DrawView extends View {
             Vertex v2 = path.getActivated().get(i+1);
             paint.setStrokeWidth(10);
             paint.setColor(blue);
+            tx = Math.round(screenX*v1.getxProp());
+            ty = Math.round(screenY*v2.getyProp());
             canvas.drawLine(v1.getXx(), v1.getYy(), v2.getXx(), v2.getYy(), paint);
         }
         // draw all vertices
@@ -75,6 +96,13 @@ public class DrawView extends View {
                 paint.setColor(blue);
             } else { paint.setColor(green); }
             canvas.drawCircle(v.getXx(), v.getYy(), v.getRadius(), paint);
+            tx = Math.round(screenX*v.getxProp());
+            ty = Math.round(screenY*v.getyProp());
+            System.out.println("woooo Txprop!" + v.getxProp());
+            System.out.println("woooo TYprop!" + v.getyProp());
+            System.out.println("woooo Tx!" + tx);
+            System.out.println("woooo TY!" + ty);
+            //canvas.drawCircle(tx,ty, v.getRadius(), paint);
         }
 
         if(!path.getActivated().isEmpty()) {
@@ -82,6 +110,9 @@ public class DrawView extends View {
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(20);
             paint.setColor(Color.BLACK);
+            tx = Math.round(screenX*first.getxProp());
+            ty = Math.round(screenY*first.getyProp());
+            //canvas.drawCircle(tx,ty, first.getRadius()/2, paint);
             canvas.drawCircle(first.getXx(), first.getYy(), first.getRadius()/2, paint);
         }
         invalidate();

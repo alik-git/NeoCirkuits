@@ -1,10 +1,14 @@
 package com.circuitstudio2016.circuits;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.GridView;
+
+import static java.security.AccessController.getContext;
 
 
 public class GraphLevelsActivity extends SelectActivity {
@@ -1683,6 +1687,12 @@ public class GraphLevelsActivity extends SelectActivity {
         if (levels_unlocked == 85678) { levels_unlocked = 1; }
 
         levels_unlocked = 100;
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenY = displayMetrics.heightPixels;
+        int screenX = displayMetrics.widthPixels;
+        hamiltonGraphs.proportion(screenX, screenY);
+        eulerGraphs.proportion(screenX, screenY);
         GraphList tempGraphs;
         if ( this.getIntent().getStringExtra("type").equals("Hamilton")) {
             tempGraphs = hamiltonGraphs;

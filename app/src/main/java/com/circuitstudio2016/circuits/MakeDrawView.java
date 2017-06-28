@@ -40,6 +40,8 @@ public class MakeDrawView extends View {
         //draw gridlines
         screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
         screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
+        System.out.println("woooomm scx!" + screenX);
+        System.out.println("woooo mmmmscy!" + screenY);
 
         Integer[] strokeX =  { 1, 3, 5, 6, 8, 10};
         Integer[] strokeY = {1,3,5,7,8,10,12,14};
@@ -72,6 +74,8 @@ public class MakeDrawView extends View {
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
+        System.out.println("woooowiiii scx!" + width);
+        System.out.println("woooohiiii scy!" + height);
         canvas.drawLine(0, height/2, width, height/2, paint);
         canvas.drawLine(width/2, 0, width/2, height, paint);
 
