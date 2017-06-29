@@ -842,8 +842,35 @@ public class GraphLevelsActivity extends SelectActivity {
             "I: (11to14)\n" +
             "I: (11to15)\n" +
             "I: edone");
-//    private Graph hg31 = this.parser.parse("");
-//    private Graph hg32 = this.parser.parse("");
+    private Graph hg31 = this.parser.parse("I: Graph(4):\n" +
+            "I: (315, 1365)\n" +
+            "I: (855, 1275)\n" +
+            "I: (675, 555)\n" +
+            "I: (225, 915)\n" +
+            "I: vdone\n" +
+            "I: Edges(4):\n" +
+            "I: (0to2)\n" +
+            "I: (0to3)\n" +
+            "I: (1to2)\n" +
+            "I: (1to3)\n" +
+            "I: edone");
+    private Graph hg32 = this.parser.parse("I: Graph(6):\n" +
+            "I: (315, 1395)\n" +
+            "I: (855, 1305)\n" +
+            "I: (675, 585)\n" +
+            "I: (225, 945)\n" +
+            "I: (360, 525)\n" +
+            "I: (540, 795)\n" +
+            "I: vdone\n" +
+            "I: Edges(7):\n" +
+            "I: (0to2)\n" +
+            "I: (0to3)\n" +
+            "I: (1to2)\n" +
+            "I: (1to3)\n" +
+            "I: (3to4)\n" +
+            "I: (3to5)\n" +
+            "I: (4to5)\n" +
+            "I: edone");
 //    private Graph hg33 = this.parser.parse("");
 //    private Graph hg34 = this.parser.parse("");
 //    private Graph hg35 = this.parser.parse("");
@@ -1854,8 +1881,35 @@ public class GraphLevelsActivity extends SelectActivity {
             "I: (14to16)\n" +
             "I: (17to18)\n" +
             "I: edone");
-//    private Graph eg31 = this.parser.parse("");
-//    private Graph eg32 = this.parser.parse("");
+    private Graph eg31 = this.parser.parse("I: Graph(4):\n" +
+            "I: (315, 1365)\n" +
+            "I: (855, 1275)\n" +
+            "I: (675, 555)\n" +
+            "I: (225, 915)\n" +
+            "I: vdone\n" +
+            "I: Edges(4):\n" +
+            "I: (0to2)\n" +
+            "I: (0to3)\n" +
+            "I: (1to2)\n" +
+            "I: (1to3)\n" +
+            "I: edone");
+    private Graph eg32 = this.parser.parse("I: Graph(6):\n" +
+            "I: (315, 1395)\n" +
+            "I: (855, 1305)\n" +
+            "I: (675, 585)\n" +
+            "I: (225, 945)\n" +
+            "I: (360, 525)\n" +
+            "I: (540, 795)\n" +
+            "I: vdone\n" +
+            "I: Edges(7):\n" +
+            "I: (0to2)\n" +
+            "I: (0to3)\n" +
+            "I: (1to2)\n" +
+            "I: (1to3)\n" +
+            "I: (3to4)\n" +
+            "I: (3to5)\n" +
+            "I: (4to5)\n" +
+            "I: edone");
 //    private Graph eg33 = this.parser.parse("");
 //    private Graph eg34 = this.parser.parse("");
 //    private Graph eg35 = this.parser.parse("");

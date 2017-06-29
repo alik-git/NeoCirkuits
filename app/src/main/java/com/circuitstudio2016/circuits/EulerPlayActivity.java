@@ -46,6 +46,37 @@ public class EulerPlayActivity extends HamiltonActivity {
         messageView.setY(Math.round(screenY/38.4));
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
         relativeLayout.addView(messageView, lp);
+
+        SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int celevel = prefs.getInt(getResources().getString(R.string.current_euler_level), 1);
+        System.out.println("CURRENT NUM IS: " + getCurrentNum() + " AND THE OTHER ONE " +
+                "IS JUST OPENED TO : " + celevel + "\n");
+
+        if(currentNum < celevel) {
+            Button nextButton = new Button(this);
+            nextButton.setText("Next");
+            nextButton.setTextSize(Math.round(screenX / 43.2));
+            nextButton.setX(screenX - Math.round(screenX / 3.1));
+            nextButton.setY(screenY - screenY / 7);
+            nextButton.setTextAppearance(this, R.style.Widget_AppCompat_Button_Borderless);
+            nextButton.setBackgroundColor(Color.BLACK);
+            nextButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    System.out.println("CURRENT NUM IS: " +
+                            getCurrentNum());
+                    intent.putExtra("unlocked", getResources().getString(R.string.current_euler_level));
+                    intent.putExtra("type", "Euler");
+                    intent.putExtra("rush", getCurrentNum());
+                    intent.setClass(getApplicationContext(), GraphLevelsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            relativeLayout.addView(nextButton);
+        }
         super.getDrawView().setEuler();
     }
 
@@ -98,6 +129,7 @@ public class EulerPlayActivity extends HamiltonActivity {
                 System.out.println("UPDATED EULER VALUE IS: " +
                         prefs.getInt(getResources().getString(R.string.current_euler_level), 1));
             }
+
             Button nextButton = new Button(this);
             nextButton.setText("Next");
             nextButton.setTextSize(Math.round(screenX/43.2));

@@ -51,7 +51,7 @@ public class HamiltonPlayActivity extends HamiltonActivity {
         System.out.println("CURRENT NUM IS: " + getCurrentNum() + " AND THE OTHER ONE " +
                 "IS JUST OPENED TO : " + chlevel + "\n");
 
-        //if(currentNum < chlevel) {
+        if(currentNum < chlevel) {
             Button nextButton = new Button(this);
             nextButton.setText("Next");
             nextButton.setTextSize(Math.round(screenX/43.2));
@@ -75,7 +75,7 @@ public class HamiltonPlayActivity extends HamiltonActivity {
             });
             getRelativeLayout().addView(nextButton);
 
-        //}
+        }
     }
 
     @Override
