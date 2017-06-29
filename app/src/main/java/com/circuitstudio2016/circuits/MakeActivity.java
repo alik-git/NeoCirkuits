@@ -174,6 +174,11 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     public void save(View w){
         FileOutputStream fos = null;
         try {
+            FileInputStream fis = this.openFileInput("graphsaves");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            graphs = (GraphList) ois.readObject();
+            ois.close();
+            fis.close();
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             graph.center();
