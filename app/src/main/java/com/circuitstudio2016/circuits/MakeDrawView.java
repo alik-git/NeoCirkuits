@@ -76,6 +76,7 @@ public class MakeDrawView extends View {
         int width = displayMetrics.widthPixels;
         System.out.println("woooowiiii scx!" + width);
         System.out.println("woooohiiii scy!" + height);
+        //kjjj
         canvas.drawLine(0, height/2, width, height/2, paint);
         canvas.drawLine(width/2, 0, width/2, height, paint);
 

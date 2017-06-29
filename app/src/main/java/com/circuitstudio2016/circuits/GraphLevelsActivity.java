@@ -1686,7 +1686,7 @@ public class GraphLevelsActivity extends SelectActivity {
         System.out.println("CURRENT RESPECTIVE LEVEL UNLOCKED IS: " + unlocked + "\n" + levels_unlocked);
         if (levels_unlocked == 85678) { levels_unlocked = 1; }
 
-        levels_unlocked = 100;
+        //levels_unlocked = 100;
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int screenY = displayMetrics.heightPixels;
