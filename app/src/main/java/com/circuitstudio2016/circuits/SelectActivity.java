@@ -20,7 +20,7 @@ public class SelectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select);
 
 
-
+//hjhj
 //        GridView gridView = (GridView) findViewById(R.id.activity_select_grid);
 //        String[]
 //        final GraphsAdapter graphsAdapter = new GraphsAdapter(this, graphs.getGraphsArray());
