@@ -1,9 +1,12 @@
 package com.circuitstudio2016.circuits;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 public class DrawView extends View {
@@ -13,6 +16,10 @@ public class DrawView extends View {
     float mouseY;
     int blue = getResources().getColor(R.color.neon_blue);
     int green = getResources().getColor(R.color.neon_green);
+    int tx, ty;
+    int screenX, screenY;
+    private boolean done = false;
+    private boolean isEuler = false;
 
     public DrawView(Context context, HamiltonPath path) {
         super(context);
@@ -25,6 +32,10 @@ public class DrawView extends View {
         paint.setColor(Color.BLACK);
     }
 
+    public void setEuler() {
+        this.isEuler = true;
+    }
+
 
 
     public void setMouseLocation(float x, float y){
@@ -32,8 +43,22 @@ public class DrawView extends View {
         mouseY = y;
     }
 
+    public void beDone() {
+        this.done = true;//
+    }
+
     @Override
     public void onDraw(Canvas canvas) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenY = displayMetrics.heightPixels;
+        screenX = displayMetrics.widthPixels;
+
+//        screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+//        screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
+        System.out.println("woooo scx!" + screenX);
+        System.out.println("woooo scy!" + screenY);
+
         // step vertices
 
         for ( Vertex v: path.getGraph().getVertices()) {
@@ -41,10 +66,12 @@ public class DrawView extends View {
         }
 
         // draw to current "mouse" location
-        if(path.getActivated().size() >= 1 && (!path.isDone() || !path.isEulerFinished())){
+        if(path.getActivated().size() >= 1 && (!done)){
             paint.setStrokeWidth(10);
             paint.setColor(blue);
             Vertex v = path.getActivated().get(path.getActivated().size()-1);
+            tx = Math.round(screenX*v.getxProp());
+            ty = Math.round(screenY*v.getyProp());
             canvas.drawLine(v.getXx(), v.getYy(), mouseX, mouseY, paint);
         }
         // draw all connection
@@ -54,6 +81,8 @@ public class DrawView extends View {
 
                 paint.setStrokeWidth(10);
                 paint.setColor(green);
+                tx = Math.round(screenX*v.getxProp());
+                ty = Math.round(screenY*v.getyProp());
                 canvas.drawLine(v.getXx(), v.getYy(), vc.getXx(), vc.getYy(), paint);
             }
         }
@@ -63,6 +92,8 @@ public class DrawView extends View {
             Vertex v2 = path.getActivated().get(i+1);
             paint.setStrokeWidth(10);
             paint.setColor(blue);
+            tx = Math.round(screenX*v1.getxProp());
+            ty = Math.round(screenY*v2.getyProp());
             canvas.drawLine(v1.getXx(), v1.getYy(), v2.getXx(), v2.getYy(), paint);
         }
         // draw all vertices
@@ -75,14 +106,36 @@ public class DrawView extends View {
                 paint.setColor(blue);
             } else { paint.setColor(green); }
             canvas.drawCircle(v.getXx(), v.getYy(), v.getRadius(), paint);
+            tx = Math.round(screenX*v.getxProp());
+            ty = Math.round(screenY*v.getyProp());
+            System.out.println("woooo Txprop!" + v.getxProp());
+            System.out.println("woooo TYprop!" + v.getyProp());
+            System.out.println("woooo Tx!" + tx);
+            System.out.println("woooo TY!" + ty);
+            //canvas.drawCircle(tx,ty, v.getRadius(), paint);
         }
-
-        if(!path.getActivated().isEmpty()) {
-            Vertex first = path.getActivated().get(0);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(20);
-            paint.setColor(Color.BLACK);
-            canvas.drawCircle(first.getXx(), first.getYy(), first.getRadius()/2, paint);
+        if (!isEuler) {
+            if (!path.getActivated().isEmpty()) {
+                Vertex first = path.getActivated().get(0);
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(Math.round(first.getRadius() / 2.25));
+                paint.setColor(Color.BLACK);
+                tx = Math.round(screenX * first.getxProp());
+                ty = Math.round(screenY * first.getyProp());
+                //canvas.drawCircle(tx,ty, first.getRadius()/2, paint);
+                canvas.drawCircle(first.getXx(), first.getYy(), first.getRadius() / 2, paint);
+            }
+        } else {
+            if ( path.getActivated().size() > 1) {
+                Vertex first = path.getActivated().get(path.getActivated().size() - 2);
+                paint.setStyle(Paint.Style.FILL);
+                //paint.setStrokeWidth(Math.round(first.getRadius() / 1.1));
+                paint.setColor(Color.BLACK);
+                tx = Math.round(screenX * first.getxProp());
+                ty = Math.round(screenY * first.getyProp());
+                //canvas.drawCircle(tx,ty, first.getRadius()/2, paint);
+                canvas.drawCircle(first.getXx(), first.getYy(), Math.round(first.getRadius() / 2.5) , paint);
+            }
         }
         invalidate();
     }

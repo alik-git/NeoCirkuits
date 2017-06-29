@@ -177,4 +177,65 @@ public class Graph implements Parcelable, Serializable{
         return s;
     }
 
+    public void proportion(int screenX, int screenY) {
+
+        for (Vertex v : this.vertices) {
+            v.proportion(screenX, screenY);
+        }
+
+
+    }
+
+    public void center() {
+        int screenX = Resources.getSystem().getDisplayMetrics().widthPixels;
+        int screenY = Resources.getSystem().getDisplayMetrics().heightPixels;
+
+        int minX = 100000;
+        int maxX = 0;
+
+        for (Vertex v: vertices) {
+            if (v.getX() < minX) {
+                minX = v.getX();
+            }
+            if (v.getX() > maxX) {
+                maxX = v.getX();
+            }
+        }
+
+        int graphWidth = maxX - minX;
+        int buffer = (screenX - graphWidth)/2;
+
+        int toMove = minX - buffer;
+        int newX;
+        for (Vertex v: vertices) {
+            newX = v.getX() - toMove;
+            v.setX( newX);
+            v.setXx(newX);
+        }
+
+        int minY = 100000;
+        int maxY = 0;
+
+        for (Vertex v: vertices) {
+            if (v.getY() < minY) {
+                minY = v.getY();
+            }
+            if (v.getY() > maxY) {
+                maxY = v.getY();
+            }
+        }
+
+        int graphHieght = maxY - minY;
+        int bufferY = (screenY - graphHieght)/2;
+
+        int toMoveY = minY - bufferY;
+        int newY;
+        for (Vertex v: vertices) {
+            newY = v.getY() - toMoveY;
+            v.setY( newY);
+            v.setYy(newY);
+        }
+
+    }
+
 }

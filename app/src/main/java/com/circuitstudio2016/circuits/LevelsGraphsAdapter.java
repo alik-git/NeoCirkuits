@@ -2,6 +2,7 @@ package com.circuitstudio2016.circuits;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class LevelsGraphsAdapter extends GraphsAdapter {
         text+= "" + graphNum;
         button.setText(text);
         button.setTextSize(16);
-        //button.setBackgroundColor(Color.BLACK);
+        button.setBackgroundColor(Color.BLACK);
         final int num = position;
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,7 @@ public class LevelsGraphsAdapter extends GraphsAdapter {
                 intent.putExtras(bundle);
                 String message = getType()[0] + (Integer.toString(num + 1));
                 intent.putExtra("message", message);
+                intent.putExtra("currentNum", num + 1);
 
                 if (getType()[1].equals("Hamilton")) {
                     intent.setClass(getmContext(), HamiltonPlayActivity.class);

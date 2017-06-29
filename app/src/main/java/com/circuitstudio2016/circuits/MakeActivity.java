@@ -26,6 +26,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     private int screenX, screenY;
     private ArrayList<UndoCommand> undos;
     private GraphList graphs;
+    private boolean deleteMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         //I commented out your tester for now -Ali
             Intent intent = new Intent();
             Bundle bundle = new Bundle();
+            graph.center();
             bundle.putParcelable("graph", graph);
             intent.putExtras(bundle);
             if (type.equals("Hamilton")) {
@@ -90,6 +92,15 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         return false;
     }
 
+    public void deleteNearVertex(float x, float y, int factor){
+        for(Vertex v: graph.getVertices()) {
+            if(nearVertex(x, y, v, factor)){
+                graph.removeVertex(v);
+                return;
+            }
+        }
+    }
+
     public boolean nearVertex(float x, float y, Vertex v, int factor){
         if(distance(x, y, v) <= screenX/factor){
             return true;
@@ -111,7 +122,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
 
     public boolean withinBounds(float x, float y) {
         if (x >= (screenX/12) && x <= (screenX - (screenX/12)*2) ) {
-            if (y >= ((screenX/12)*4) && y <= (screenY - ((screenX/12)*5))) {
+            if (y >= ((screenX/12)*4) && y <= (screenY - ((screenX/12)*4))) {
                 return true;
             }
         }
@@ -122,21 +133,28 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View v, MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if(!nearAnyVertex(e.getX(), e.getY(), 6) && withinBounds(e.getX(), e.getY())){
-                    Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
-                    graph.addVertex(vrtx);
-                    undos.add(new UndoVertex(vrtx, graph));
-                    prev = vrtx;
-                }
-                for(Vertex vrtx: graph.getVertices()){
-                    if(nearVertex(e.getX(), e.getY(), vrtx, 6)){
+                if (deleteMode) {
+                    deleteNearVertex(e.getX(), e.getY(), screenX/180);
+                    break;
+                } else {
+                    if(!nearAnyVertex(e.getX(), e.getY(), screenX/180) && withinBounds(e.getX(), e.getY())){
+                        Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
+                        graph.addVertex(vrtx);
+                        undos.add(new UndoVertex(vrtx, graph));
                         prev = vrtx;
                     }
+                    for(Vertex vrtx: graph.getVertices()){
+                        if(nearVertex(e.getX(), e.getY(), vrtx, screenX/180)){
+                            prev = vrtx;
+                        }
+                    }
+                    break;
+
                 }
-                break;
+
             case MotionEvent.ACTION_MOVE:
                 for(Vertex vrtx: graph.getVertices()) {
-                    if (nearVertex(e.getX(), e.getY(), vrtx, 12) && prev != null && vrtx != prev) {
+                    if (nearVertex(e.getX(), e.getY(), vrtx, screenX/90) && prev != null && vrtx != prev) {
                         if(!vrtx.isConnected(prev)) {
                             vrtx.connect(prev);
                             undos.add(new UndoConnection(vrtx, prev));
@@ -158,9 +176,11 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         try {
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
+            graph.center();
             Graph gcopy = new Graph(graph);
             graphs.addGraph(gcopy);
-            System.out.println("added graph to list" + graphs);
+            System.out.println("added graph to list-----------------\n" + graph);
+            System.out.println("added graph to list-----------------");
             oos.writeObject(graphs);
             oos.close();
             fos.close();
@@ -235,5 +255,9 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
             undos.remove(undos.size()-1);
             drawView.invalidate();
         }
+    }
+
+    public void toggleDeleteMode(View w) {
+        deleteMode = !deleteMode;
     }
 }

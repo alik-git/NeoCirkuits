@@ -11,61 +11,53 @@
         android:id="@+id/activity_make_const">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/activity_make_const2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:id="@+id/activity_make_const2"
-            android:layout_marginRight="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"
-            tools:layout_editor_absoluteY="11dp"
-            tools:layout_editor_absoluteX="32dp">
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </android.support.constraint.ConstraintLayout>
 
-        <Button
-            android:id="@+id/button29"
-            style="@style/Widget.AppCompat.Button.Borderless"
+        <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="0dp"
-            android:onClick="clear"
-            android:text="@string/clear"
+            android:layout_marginTop="32dp"
+            android:checked="false"
+            android:duplicateParentState="false"
+            android:onClick="toggleBoundary"
+            android:text="@string/boundary"
+            android:textColor="@color/neon_green"
             android:textSize="24sp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button26" />
-
-        <Button
-            android:id="@+id/button28"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:onClick="testPath"
-            android:text="@string/test_path"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/button27" />
-
-        <Button
-            android:id="@+id/button27"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:layout_marginLeft="8dp"
-            android:onClick="testCircuit"
-            android:text="@string/test_circuit"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="8dp" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button23"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="save"
+            android:text="@string/save"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button24"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="better_load"
+            android:text="@string/load"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button23" />
 
         <Button
             android:id="@+id/button26"
@@ -81,46 +73,72 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button24"
+            android:id="@+id/button27"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="better_load"
-            android:text="@string/load"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:onClick="testCircuit"
+            android:text="@string/test_circuit"
             android:textSize="24sp"
-            android:layout_marginTop="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/button23"
-            android:layout_marginLeft="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <Button
-            android:id="@+id/button23"
+            android:id="@+id/button28"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:onClick="save"
-            android:text="@string/save"
+            android:layout_marginBottom="7dp"
+            android:onClick="testPath"
+            android:text="@string/test_path"
             android:textSize="24sp"
-            android:layout_marginLeft="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/button27" />
+
+        <Button
+            android:id="@+id/button29"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:onClick="clear"
+            android:text="@string/clear"
+            android:textSize="24sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button26" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X"
+            android:textColor="@color/neon_blue"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="0dp" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="24dp"
             android:checked="false"
-            android:duplicateParentState="false"
-            android:onClick="toggleBoundary"
-            android:text="@string/boundary"
-            android:textColor="@color/neon_green"
+            android:text="Del"
+            android:textAllCaps="true"
+            android:textColor="@color/redAF"
+            android:textColorLink="@color/redAF"
+            android:onClick="toggleDeleteMode"
             android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp"
-            app:layout_constraintHorizontal_bias="0.501" />
+            android:theme="@style/aaaToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 </RelativeLayout>

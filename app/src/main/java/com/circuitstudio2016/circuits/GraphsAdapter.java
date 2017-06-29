@@ -3,6 +3,7 @@ package com.circuitstudio2016.circuits;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,11 +48,11 @@ public class GraphsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Button button = new Button(mContext);
         int graphNum = position + 1;
-        String text = type[0];
+        String text = type[0];//
         text+= "" + graphNum;
-        button.setText(text);
+        button.setText(text);//
         button.setTextSize(16);
-        //button.setBackgroundColor(Color.BLACK);
+        button.setBackgroundColor(Color.BLACK);//
         final int num = position;
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +67,7 @@ public class GraphsAdapter extends BaseAdapter {
                 intent.putExtras(bundle);
                 String message = type[0] + (Integer.toString(num + 1));
                 intent.putExtra("message", message);
+                intent.putExtra("currentNum", num + 1);
                 if (type[0].equals("Graph ")) {
                     //type = mContext.getType();
                     if (type[1].equals("Hamilton")) {

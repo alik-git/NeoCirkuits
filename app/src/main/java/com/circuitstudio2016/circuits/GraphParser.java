@@ -50,50 +50,50 @@ public class GraphParser {
                     case 0:
                         m = pGraphHeader.matcher(line);
                         if (m.find()) {
-                            System.out.println("matched 0\n");
+                            //System.out.println("matched 0\n");
                             state = 1;
                             break;
                         }
                     case 1:
                         m = pVert.matcher(line);
                         if (m.find()) {
-                            System.out.println("matched vert\n");
+                            //System.out.println("matched vert\n");
                             int x = Integer.parseInt(m.group(1));
                             int y = Integer.parseInt(m.group(2));
                             Vertex v = new Vertex(x,y);
-                            System.out.println("vert is " + v);
+                            //System.out.println("vert is " + v);
                             this.graph.addVertex(v);
                             state = 1;
                             break;
                         }
                         m = pvEnd.matcher(line);
                         if (m.find()) {
-                            System.out.println("matched vert end\n");
+                            //System.out.println("matched vert end\n");
                             state = 2;
                             break;
                         }
                     case 2:
                         m = pEdgeHeader.matcher(line);
                         if (m.find()) {
-                            System.out.println("matched e head\n");
+                            //System.out.println("matched e head\n");
                             state = 3;
                             break;
                         }
                     case 3:
                         m = pEdge.matcher(line);
                         if (m.find()) {
-                            System.out.println("matched edge\n");
+                            //System.out.println("matched edge\n");
                             int a = Integer.parseInt(m.group(1));
                             int b = Integer.parseInt(m.group(2));
-                            System.out.println("edge is " + a + " to " + b + "\n");
+                            //System.out.println("edge is " + a + " to " + b + "\n");
                             this.graph.getVertices().get(a).connect(this.graph.getVertices().get(b));
-                            System.out.println("added edge\n");
+                            //System.out.println("added edge\n");
                             state = 3;
                             break;
                         }
                         m = peEnd.matcher(line);
                         if (m.find()) {
-                            System.out.println("matched edge end\n");
+                            //System.out.println("matched edge end\n");
                             state = 3;
                             break;
                         }

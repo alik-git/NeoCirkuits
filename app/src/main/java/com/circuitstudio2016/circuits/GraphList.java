@@ -84,9 +84,15 @@ public class GraphList implements Parcelable, Serializable{
 
     public int getSize() { return graphs.size(); }
 
+    public void proportion(int sX, int sY) {
+        for (Graph g: graphs) {
+            g.proportion(sX,sY);
+        }
+    }
+
     public String toString() {
         String s = "------------\n";
-        s += "GraphList(" + graphs.size() + "):\n";
+        s += "GraphList(" + graphs.size() + "):-----------------------------------\n";
         int i = 0;
         for (Graph g: graphs) {
             s += "#" + i + " " + g.toString() + "\n";
