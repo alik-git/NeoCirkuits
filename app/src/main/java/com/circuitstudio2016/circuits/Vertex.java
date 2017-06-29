@@ -28,6 +28,7 @@ public class Vertex implements Parcelable, Serializable{
     private int yy;
     private float yProp;
     private int radius = (Resources.getSystem().getDisplayMetrics().widthPixels)/24;
+    int screenX = Resources.getSystem().getDisplayMetrics().widthPixels/12;
     private int color;
     private boolean isActivated;
     private ArrayList<Vertex> connections;
@@ -37,18 +38,18 @@ public class Vertex implements Parcelable, Serializable{
 
     public Vertex(int x, int y, int radius){
         //this snaps the vertices to the grid-lines
-        if (x%90 == 0) {
+        if (x%screenX == 0) {
             this.x = x;
             this.xx = this.x;
         } else {
-            this.x = (90*(Math.round(x/90))+90);
+            this.x = (screenX*(Math.round(x/screenX))+screenX);
             this.xx = this.x;
         }
-        if ((y - 45)%90 == 0) {
+        if ((y - screenX/2)%screenX == 0) {
             this.y = y;
             this.yy = this.y;
         } else {
-            this.y = (90*(Math.round(y/90))+45);
+            this.y = (screenX*(Math.round(y/screenX))+screenX/2);
             this.yy = this.y;
         }
         this.xProp = (float)this.x/1080;
@@ -60,18 +61,18 @@ public class Vertex implements Parcelable, Serializable{
 
     public Vertex(int x, int y){
         //this snaps the vertices to the grid-lines
-        if (x%90 == 0) {
+        if (x%screenX == 0) {
             this.x = x;
             this.xx = this.x;
         } else {
-            this.x = (90*(Math.round(x/90))+90);
+            this.x = (screenX*(Math.round(x/screenX))+screenX);
             this.xx = this.x;
         }
-        if ((y - 45)%90 == 0) {
+        if ((y - screenX/2)%screenX == 0) {
             this.y = y;
             this.yy = this.y;
         } else {
-            this.y = (90*(Math.round(y/90))+45);
+            this.y = (screenX*(Math.round(y/screenX))+screenX/2);
             this.yy = this.y;
         }
         this.xProp = (float)this.x/1080;

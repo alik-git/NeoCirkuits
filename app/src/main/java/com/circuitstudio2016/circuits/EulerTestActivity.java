@@ -26,6 +26,7 @@ public class EulerTestActivity extends HamiltonActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_graph_test);
         relativeLayout = (RelativeLayout) findViewById(R.id.graph_test_relative);
         init(new HamiltonCircuit(getGraph()), relativeLayout);
@@ -36,18 +37,21 @@ public class EulerTestActivity extends HamiltonActivity {
             currentNum =  this.getIntent().getIntExtra("currentNum", 1);
         }
 
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 //        getLayout().addView(endButton, lp);
 
         //make message
         TextView messageView = new TextView(this);
-        messageView.setTextSize(25);
+
         String text = "(E)" + message;
         messageView.setText(text);
-        messageView.setX(32);
-        messageView.setY(50);
+        messageView.setTextSize(Math.round(screenX/43.2));
+        messageView.setX(Math.round(screenX/33.75));
+        messageView.setY(Math.round(screenY/38.4));
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
         relativeLayout.addView(messageView, lp);
+        super.getDrawView().setEuler();
     }
 
 
@@ -64,6 +68,8 @@ public class EulerTestActivity extends HamiltonActivity {
     @Override
     public void checkWon(){
         if(super.getPath().isEulerFinished()){
+            super.getDrawView().beDone();
+
 //            Button endButton = new Button(this);
 //            endButton.setText("Go Back");
 //            endButton.setX(screenX/3);

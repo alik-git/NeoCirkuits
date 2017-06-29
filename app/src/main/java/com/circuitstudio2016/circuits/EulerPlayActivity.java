@@ -22,6 +22,7 @@ public class EulerPlayActivity extends HamiltonActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_graph_play);
         relativeLayout = (RelativeLayout) findViewById(R.id.graph_play_relative);
         init(new HamiltonCircuit(getGraph()), relativeLayout);
@@ -32,18 +33,20 @@ public class EulerPlayActivity extends HamiltonActivity {
             currentNum =  this.getIntent().getIntExtra("currentNum", 1);
         }
 
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 //        getLayout().addView(endButton, lp);
 
         //make message
         TextView messageView = new TextView(this);
-        messageView.setTextSize(25);
         String text = "Euler\n" + message;
         messageView.setText(text);
-        messageView.setX(32);
-        messageView.setY(50);
+        messageView.setTextSize(Math.round(screenX/43.2));
+        messageView.setX(Math.round(screenX/33.75));
+        messageView.setY(Math.round(screenY/38.4));
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
         relativeLayout.addView(messageView, lp);
+        super.getDrawView().setEuler();
     }
 
     @Override
@@ -78,6 +81,7 @@ public class EulerPlayActivity extends HamiltonActivity {
     @Override
     public void checkWon(){
         if (getPath().isEulerFinished()) {
+            super.getDrawView().beDone();
             Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
             t1.show();
 
@@ -96,7 +100,7 @@ public class EulerPlayActivity extends HamiltonActivity {
             }
             Button nextButton = new Button(this);
             nextButton.setText("Next");
-            nextButton.setTextSize(24);
+            nextButton.setTextSize(Math.round(screenX/43.2));
             nextButton.setX(screenX - Math.round(screenX/3.1));
             nextButton.setY(screenY - screenY/7);
             nextButton.setTextAppearance(this, R.style.Widget_AppCompat_Button_Borderless);

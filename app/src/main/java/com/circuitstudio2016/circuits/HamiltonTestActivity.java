@@ -41,16 +41,17 @@ public class HamiltonTestActivity extends HamiltonActivity {
 //                finish();
 //            }
 //        });
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(400, 200);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 //        getLayout().addView(endButton, lp);
 
         //make message
         TextView messageView = new TextView(this);
-        messageView.setTextSize(25);
         String text = "(H)" + message;
         messageView.setText(text);
-        messageView.setX(32);
-        messageView.setY(50);
+        messageView.setTextSize(Math.round(screenX/43.2));
+        messageView.setX(Math.round(screenX/33.75));
+        messageView.setY(Math.round(screenY/38.4));
         messageView.setTextColor(getResources().getColor(R.color.neon_green));
         relativeLayout.addView(messageView, lp);
     }
@@ -82,6 +83,7 @@ public class HamiltonTestActivity extends HamiltonActivity {
     public void checkWon(){
         //System.out.println("yopoooooooooooooooooooooooooooo22222fgdsgsgf222222");
         if(getPath().isDone()){
+            super.getDrawView().beDone();
             Toast t1 = Toast.makeText(getApplicationContext(), "You Win!", Toast.LENGTH_LONG);
             t1.show();
             //getPath().reset();

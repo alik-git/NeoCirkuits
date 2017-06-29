@@ -106,6 +106,7 @@ public class HamiltonActivity extends AppCompatActivity implements View.OnTouchL
 
     public void checkWon(){
         if(path.isFinished()){
+            drawView.beDone();
             Button endButton = new Button(this);
             endButton.setText("Go Back");
             endButton.setX(screenX/3);

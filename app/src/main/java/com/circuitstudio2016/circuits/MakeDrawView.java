@@ -52,7 +52,7 @@ public class MakeDrawView extends View {
             paint.setColor(Color.argb(200,0,191,250));
             int x2 = x/90;
             //make some lines bold for help
-            if (Arrays.asList(strokeX).contains(x2)) { paint.setStrokeWidth(3);}
+            if (Arrays.asList(strokeX).contains(x2)) { paint.setStrokeWidth(screenX/360);}
             canvas.drawLine(x+45, 0, x+45, screenY, paint);
             //System.out.println((x+45) + "   " + x/90);
         }
@@ -64,12 +64,12 @@ public class MakeDrawView extends View {
             paint.setColor(Color.argb(200,0,191,250));
             int y2 = y/90;
             //make some lines bold for help
-            if (Arrays.asList(strokeY).contains(y2)) { paint.setStrokeWidth(3);}
+            if (Arrays.asList(strokeY).contains(y2)) { paint.setStrokeWidth(screenX/360);}
             canvas.drawLine(0, y, screenX, y, paint);
         }
 
         //mid lines
-        paint.setStrokeWidth(3);
+        paint.setStrokeWidth(screenX/360);
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
@@ -84,7 +84,7 @@ public class MakeDrawView extends View {
         // draw all connection
         for(Vertex v: graph.getVertices()) {
             for (Vertex vc : v.getConnections()) {
-                paint.setStrokeWidth(10);
+                paint.setStrokeWidth(screenX/108);
                 paint.setColor(Color.parseColor("#40ff70"));
                 canvas.drawLine(v.getX(), v.getY(), vc.getX(), vc.getY(), paint);
             }

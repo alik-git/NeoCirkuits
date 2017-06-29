@@ -134,17 +134,17 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (deleteMode) {
-                    deleteNearVertex(e.getX(), e.getY(), 6);
+                    deleteNearVertex(e.getX(), e.getY(), screenX/180);
                     break;
                 } else {
-                    if(!nearAnyVertex(e.getX(), e.getY(), 6) && withinBounds(e.getX(), e.getY())){
+                    if(!nearAnyVertex(e.getX(), e.getY(), screenX/180) && withinBounds(e.getX(), e.getY())){
                         Vertex vrtx = new Vertex((int) e.getX(), (int)e.getY(), screenX/24);
                         graph.addVertex(vrtx);
                         undos.add(new UndoVertex(vrtx, graph));
                         prev = vrtx;
                     }
                     for(Vertex vrtx: graph.getVertices()){
-                        if(nearVertex(e.getX(), e.getY(), vrtx, 6)){
+                        if(nearVertex(e.getX(), e.getY(), vrtx, screenX/180)){
                             prev = vrtx;
                         }
                     }
@@ -154,7 +154,7 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
 
             case MotionEvent.ACTION_MOVE:
                 for(Vertex vrtx: graph.getVertices()) {
-                    if (nearVertex(e.getX(), e.getY(), vrtx, 12) && prev != null && vrtx != prev) {
+                    if (nearVertex(e.getX(), e.getY(), vrtx, screenX/90) && prev != null && vrtx != prev) {
                         if(!vrtx.isConnected(prev)) {
                             vrtx.connect(prev);
                             undos.add(new UndoConnection(vrtx, prev));
