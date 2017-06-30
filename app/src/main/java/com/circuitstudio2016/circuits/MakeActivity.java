@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -174,11 +175,13 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
     public void save(View w){
         FileOutputStream fos = null;
         try {
-            FileInputStream fis = this.openFileInput("graphsaves");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            graphs = (GraphList) ois.readObject();
-            ois.close();
-            fis.close();
+            if (fileExists(this, "graphsaves")) {
+                FileInputStream fis = this.openFileInput("graphsaves");
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                graphs = (GraphList) ois.readObject();
+                ois.close();
+                fis.close();
+            }
             fos = this.openFileOutput("graphsaves", Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             graph.center();
@@ -264,5 +267,12 @@ public class MakeActivity extends AppCompatActivity implements View.OnTouchListe
 
     public void toggleDeleteMode(View w) {
         deleteMode = !deleteMode;
+    }
+    public boolean fileExists(Context context, String filename) {
+        File file = context.getFileStreamPath(filename);
+        if(file == null || !file.exists()) {
+            return false;
+        }
+        return true;
     }
 }
